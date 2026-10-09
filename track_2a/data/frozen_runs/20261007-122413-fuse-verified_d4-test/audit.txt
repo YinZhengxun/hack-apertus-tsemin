@@ -1,0 +1,35 @@
+验收摘要（只检查，不改任何预测）
+fuse: data/frozen_runs/20261007-122413-fuse-verified_d4-test
+m2: data/frozen_runs/20261007-114305-m2-test
+d4: data/frozen_runs/20261007-122232-d4-test
+
+[de] 文档 56
+  m2 结果缺的文档: 0
+  d4 结果缺的文档: 0
+  fuse 结果缺的文档: 0
+  m2 块: 问了 2035，拿到判断 2032，没拿到 3（按'无差异'记）；判断分布 {'partly': 1098, 'absent': 261, 'covered': 673}；受影响文档 1
+  d4 侧: 应有 112，完整 112，缺 0，长度不符 0；对齐 {'exact': 224}
+  fuse 状态 {'ok': 56}；没有 d4、退回 m2 的侧 0
+  预测文件: 56 行，顺序与金标一致 True，长度不符 0，取值 [0.000, 0.949]，sha256 ea93e63f09d11f75
+[fr] 文档 56
+  m2 结果缺的文档: 0
+  d4 结果缺的文档: 0
+  fuse 结果缺的文档: 0
+  m2 块: 问了 1952，拿到判断 1949，没拿到 3（按'无差异'记）；判断分布 {'partly': 1167, 'covered': 533, 'absent': 249}；受影响文档 2
+  d4 侧: 应有 112，完整 112，缺 0，长度不符 0；对齐 {'exact': 224}
+  fuse 状态 {'ok': 56}；没有 d4、退回 m2 的侧 0
+  预测文件: 56 行，顺序与金标一致 True，长度不符 0，取值 [0.000, 0.920]，sha256 f265b5131d10f7a5
+[it] 文档 56
+  m2 结果缺的文档: 0
+  d4 结果缺的文档: 0
+  fuse 结果缺的文档: 0
+  m2 块: 问了 1901，拿到判断 1896，没拿到 5（按'无差异'记）；判断分布 {'partly': 1163, 'covered': 500, 'absent': 233}；受影响文档 3
+  d4 侧: 应有 112，完整 112，缺 0，长度不符 0；对齐 {'exact': 224}
+  fuse 状态 {'ok': 56}；没有 d4、退回 m2 的侧 0
+  预测文件: 56 行，顺序与金标一致 True，长度不符 0，取值 [0.000, 0.901]，sha256 0118203283f35617
+
+已声明的限制（不改预测，报告里写明）:
+  - de: 3 of 2035 m2 blocks were not judged (kept the default 'no difference') in 1 documents, 0 of them recorded as ok
+  - fr: 3 of 1952 m2 blocks were not judged (kept the default 'no difference') in 2 documents, 2 of them recorded as ok
+  - it: 5 of 1901 m2 blocks were not judged (kept the default 'no difference') in 3 documents, 0 of them recorded as ok
+没有致命问题。

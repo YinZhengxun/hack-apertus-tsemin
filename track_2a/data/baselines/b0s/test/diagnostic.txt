@@ -1,0 +1,23 @@
+=== as run (official pooling), test 56/lang
+  b0s             -0.019 0.004 -0.030 | -0.015
+  D4-contrastive  0.398 0.176 0.359 | 0.311
+  Fuse            0.412 0.189 0.367 | 0.323
+  CTFAlign        0.330 0.189 0.353 | 0.291
+
+=== chunk calls: 691  {'truncated': 322, 'ok': 358, 'invalid': 11} ; truncated with a repetition loop in the tail: 206
+  de: {'truncated': 111, 'ok': 106, 'invalid': 6}
+  fr: {'truncated': 121, 'ok': 117}
+  it: {'ok': 135, 'invalid': 5, 'truncated': 90}
+
+=== only tokens inside chunks that answered (status ok)
+  b0s             -0.033 0.004 -0.005 | -0.011   (tokens 17236/40689=42% 22036/46623=47% 25272/44768=56%)
+  D4-contrastive  0.378 0.222 0.343 | 0.315   (tokens 17236/40689=42% 22036/46623=47% 25272/44768=56%)
+  Fuse            0.390 0.235 0.344 | 0.323   (tokens 17236/40689=42% 22036/46623=47% 25272/44768=56%)
+  CTFAlign        0.319 0.208 0.312 | 0.280   (tokens 17236/40689=42% 22036/46623=47% 25272/44768=56%)
+
+=== b0s predicted-difference rate (score>0) vs gold rate, and doc statuses
+Traceback (most recent call last):
+  File "/home/claude/uzh-semantic-diff/track_2a/tools/b0s_chunk_diagnostic.py", line 104, in <module>
+    rows = [json.loads(l) for l in open(RUN / "results_b0s.jsonl")]
+                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/frozen_runs/20261008-140115-b0s-test/results_b0s.jsonl'

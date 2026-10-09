@@ -25,3 +25,9 @@ build/
 .DS_Store
 .idea/
 .vscode/
+
+# Run outputs (raw calls, cache, intermediate results); final predictions are copied to data/predictions
+runs/
+
+# make run outputs (copies of the prediction files land here)
+output/

@@ -1,0 +1,45 @@
+{
+ "a": {
+  "point": {
+   "de": 0.4039391869476889,
+   "fr": 0.22653205142397695,
+   "it": 0.38931329317780566,
+   "mean": 0.3399281771831572
+  },
+  "bootstrap_mean": 0.3393946007871714,
+  "ci95": [
+   0.30958165176730856,
+   0.37047420674888876
+  ]
+ },
+ "b": {
+  "point": {
+   "de": 0.37663250886220717,
+   "fr": 0.2202324338211794,
+   "it": 0.36151029583013433,
+   "mean": 0.3194584128378403
+  },
+  "bootstrap_mean": 0.3189136367268659,
+  "ci95": [
+   0.2974252962068945,
+   0.3422334324300924
+  ]
+ },
+ "unit": "English page (its de/fr/it document pairs drawn together)",
+ "pages": 168,
+ "resamples_requested": 1000,
+ "resamples_valid": 1000,
+ "resamples_undefined": 0,
+ "seed": 0,
+ "statistic": "mean over languages of the pooled token-level Spearman (official definition)",
+ "interval": "percentile, 2.5–97.5",
+ "diff": {
+  "point": 0.020469764345316888,
+  "bootstrap_mean": 0.020480964060305466,
+  "ci95": [
+   0.0101575793387851,
+   0.032186418329135984
+  ],
+  "resamples_diff_not_positive": 0
+ }
+}

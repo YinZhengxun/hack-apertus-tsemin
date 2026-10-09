@@ -1,0 +1,482 @@
+{
+ "method": "b0s",
+ "model": "swiss-ai/Apertus-v1.5-8B",
+ "prompt_version": [
+  "b0_paper_template_short@3d65ebd96ea3",
+  "b0_paper_template_short@79e6cd0c9ae8",
+  "b0_paper_template_short@ace9e0f82646"
+ ],
+ "score": {
+  "macro_spearman": -0.011066261337007296,
+  "per_lang": {
+   "de": {
+    "lang": "de",
+    "n_docs": 20,
+    "n_scored_tokens": 13560,
+    "spearman": -0.04349911196614337,
+    "precision": 0.1134648868253047,
+    "recall": 0.20987654320987653,
+    "f1": 0.14729704275758146,
+    "gold_positive_rate": 0.13738938053097347,
+    "pred_positive_rate": 0.2541297935103245,
+    "failed_docs": []
+   },
+   "fr": {
+    "lang": "fr",
+    "n_docs": 20,
+    "n_scored_tokens": 15044,
+    "spearman": -0.014739337590192372,
+    "precision": 0.09601386481802426,
+    "recall": 0.17141089108910892,
+    "f1": 0.12308375916463006,
+    "gold_positive_rate": 0.1074182398298325,
+    "pred_positive_rate": 0.1917708056367987,
+    "failed_docs": []
+   },
+   "it": {
+    "lang": "it",
+    "n_docs": 20,
+    "n_scored_tokens": 14377,
+    "spearman": 0.02503966554531385,
+    "precision": 0.17369727047146402,
+    "recall": 0.2710843373493976,
+    "f1": 0.2117291211561082,
+    "gold_positive_rate": 0.16164707518953886,
+    "pred_positive_rate": 0.25227794393823466,
+    "failed_docs": []
+   }
+  }
+ },
+ "score_table": "语种  篇数  计分词数  Spearman   准确率   召回率    F1   金标差异率  预测差异率  失败篇数\nde      20     13560    -0.043    0.113    0.210  0.147      0.137      0.254        0\nfr      20     15044    -0.015    0.096    0.171  0.123      0.107      0.192        0\nit      20     14377     0.025    0.174    0.271  0.212      0.162      0.252        0\n三个语种平均 Spearman: -0.011",
+ "statuses": {
+  "salvaged": 46,
+  "invalid_answer": 3,
+  "ok": 11
+ },
+ "quote_locations": {},
+ "block_statuses": {},
+ "cost": {
+  "documents": 60,
+  "calls": 229,
+  "calls_from_cache": 1,
+  "prompt_tokens": 387275,
+  "completion_tokens": 485086,
+  "prompt_tokens_per_doc": 6454.6,
+  "completion_tokens_per_doc": 8084.8,
+  "seconds_per_doc_uncached": 49.17
+ },
+ "not_ok": [
+  {
+   "id": "admin_de_0",
+   "status": "salvaged",
+   "error": "2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_37",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_60",
+   "status": "invalid_answer",
+   "error": "no chunk produced a readable answer",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_72",
+   "status": "salvaged",
+   "error": "3 of 4 chunks failed (invalid_answer=1, ok=1, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_78",
+   "status": "salvaged",
+   "error": "2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_100",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_125",
+   "status": "salvaged",
+   "error": "5 of 7 chunks failed (ok=2, truncated=5); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_135",
+   "status": "salvaged",
+   "error": "1 of 5 chunks failed (invalid_answer=1, ok=4); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_148",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_153",
+   "status": "salvaged",
+   "error": "5 of 8 chunks failed (invalid_answer=1, ok=3, truncated=4); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_175",
+   "status": "salvaged",
+   "error": "2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_180",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_182",
+   "status": "salvaged",
+   "error": "4 of 5 chunks failed (ok=1, truncated=4); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_184",
+   "status": "salvaged",
+   "error": "3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_de_215",
+   "status": "salvaged",
+   "error": "2 of 4 chunks failed (invalid_answer=1, ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_222",
+   "status": "salvaged",
+   "error": "4 of 7 chunks failed (ok=3, truncated=4); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_0",
+   "status": "salvaged",
+   "error": "1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_60",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_72",
+   "status": "salvaged",
+   "error": "3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_78",
+   "status": "salvaged",
+   "error": "2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_100",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_122",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_125",
+   "status": "salvaged",
+   "error": "6 of 8 chunks failed (invalid_answer=1, ok=2, truncated=5); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_135",
+   "status": "salvaged",
+   "error": "2 of 5 chunks failed (ok=3, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_148",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_153",
+   "status": "salvaged",
+   "error": "6 of 9 chunks failed (ok=3, truncated=6); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_175",
+   "status": "salvaged",
+   "error": "2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_176",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_180",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_182",
+   "status": "salvaged",
+   "error": "3 of 5 chunks failed (ok=2, truncated=3); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_184",
+   "status": "salvaged",
+   "error": "1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_213",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_215",
+   "status": "salvaged",
+   "error": "2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_222",
+   "status": "salvaged",
+   "error": "6 of 8 chunks failed (ok=2, truncated=6); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_72",
+   "status": "salvaged",
+   "error": "3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_78",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_100",
+   "status": "invalid_answer",
+   "error": "no chunk produced a readable answer",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_122",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_125",
+   "status": "salvaged",
+   "error": "3 of 8 chunks failed (ok=5, truncated=3); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_135",
+   "status": "salvaged",
+   "error": "1 of 5 chunks failed (ok=4, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_148",
+   "status": "salvaged",
+   "error": "1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_153",
+   "status": "salvaged",
+   "error": "5 of 9 chunks failed (ok=4, truncated=5); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_175",
+   "status": "salvaged",
+   "error": "1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_180",
+   "status": "salvaged",
+   "error": "1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_182",
+   "status": "salvaged",
+   "error": "4 of 6 chunks failed (ok=2, truncated=4); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_184",
+   "status": "salvaged",
+   "error": "3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_213",
+   "status": "invalid_answer",
+   "error": "no chunk produced a readable answer",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_215",
+   "status": "salvaged",
+   "error": "1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_222",
+   "status": "salvaged",
+   "error": "1 of 8 chunks failed (ok=7, truncated=1); their tokens are scored as no difference",
+   "finish_reason": "stop"
+  }
+ ],
+ "diagnostics": {
+  "de": {
+   "recall_by_position_decile": [
+    0.291,
+    0.256,
+    0.305,
+    0.237,
+    0.164,
+    0.306,
+    0.114,
+    0.096,
+    0.182,
+    0.185
+   ],
+   "gold_positive_by_decile": [
+    148,
+    133,
+    213,
+    194,
+    122,
+    209,
+    245,
+    218,
+    143,
+    238
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  },
+  "fr": {
+   "recall_by_position_decile": [
+    0.277,
+    0.06,
+    0.056,
+    0.172,
+    0.244,
+    0.438,
+    0.135,
+    0.245,
+    0.0,
+    0.232
+   ],
+   "gold_positive_by_decile": [
+    112,
+    167,
+    286,
+    215,
+    160,
+    121,
+    133,
+    98,
+    113,
+    211
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  },
+  "it": {
+   "recall_by_position_decile": [
+    0.523,
+    0.446,
+    0.049,
+    0.122,
+    0.134,
+    0.206,
+    0.423,
+    0.261,
+    0.159,
+    0.261
+   ],
+   "gold_positive_by_decile": [
+    214,
+    204,
+    205,
+    205,
+    179,
+    194,
+    336,
+    245,
+    189,
+    353
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  }
+ },
+ "failed_documents": [
+  "admin_de_60",
+  "admin_it_100",
+  "admin_it_213"
+ ]
+}

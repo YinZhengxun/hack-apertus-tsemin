@@ -1,0 +1,221 @@
+{
+ "fuse_run": "data/frozen_runs/20261007-113912-fuse-verified_d4-dev",
+ "m2_run": "data/frozen_runs/20261006-214833-m2-dev",
+ "d4_run": "data/frozen_runs/20261007-112326-d4-dev",
+ "languages": {
+  "de": {
+   "documents_expected": 168,
+   "m2_missing_documents": [],
+   "d4_missing_documents": [],
+   "fuse_missing_documents": [],
+   "m2_blocks_asked": 5387,
+   "m2_blocks_judged": 5375,
+   "m2_blocks_unjudged": 12,
+   "m2_judged_status_counts": {
+    "partly": 2931,
+    "covered": 1904,
+    "absent": 540
+   },
+   "m2_documents_with_unjudged_blocks": [
+    {
+     "id": "admin_de_12",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_de_29",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_de_45",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_de_66",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_de_72",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_de_73",
+     "unjudged_blocks": 3,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_de_100",
+     "unjudged_blocks": 1,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_de_112",
+     "unjudged_blocks": 2,
+     "recorded_status": "ok"
+    }
+   ],
+   "d4_sides_expected": 336,
+   "d4_sides_complete": 336,
+   "d4_sides_missing": [],
+   "d4_length_mismatch": [],
+   "d4_alignment_counts": {
+    "exact": 672
+   },
+   "fuse_status_counts": {
+    "ok": 168
+   },
+   "fuse_sides_without_d4": 0,
+   "prediction_file": {
+    "path": "data/frozen_runs/20261007-113912-fuse-verified_d4-dev/predictions/fuse/tsemin_admin_de.jsonl.jsonl",
+    "rows": 168,
+    "order_matches_gold": true,
+    "label_length_mismatch": [],
+    "min": 0.0,
+    "max": 0.9966869923521369,
+    "sha256": "ec52f13bfbc62dd9795bc121bb03f4d8e0a0d040d62ef23c46673bac1a1a4e3b"
+   }
+  },
+  "fr": {
+   "documents_expected": 168,
+   "m2_missing_documents": [],
+   "d4_missing_documents": [],
+   "fuse_missing_documents": [],
+   "m2_blocks_asked": 5228,
+   "m2_blocks_judged": 5219,
+   "m2_blocks_unjudged": 9,
+   "m2_judged_status_counts": {
+    "covered": 1550,
+    "partly": 3119,
+    "absent": 550
+   },
+   "m2_documents_with_unjudged_blocks": [
+    {
+     "id": "admin_fr_61",
+     "unjudged_blocks": 1,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_fr_82",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_fr_113",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_fr_153",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_fr_196",
+     "unjudged_blocks": 1,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_fr_215",
+     "unjudged_blocks": 2,
+     "recorded_status": "ok"
+    }
+   ],
+   "d4_sides_expected": 336,
+   "d4_sides_complete": 336,
+   "d4_sides_missing": [],
+   "d4_length_mismatch": [],
+   "d4_alignment_counts": {
+    "exact": 672
+   },
+   "fuse_status_counts": {
+    "ok": 168
+   },
+   "fuse_sides_without_d4": 0,
+   "prediction_file": {
+    "path": "data/frozen_runs/20261007-113912-fuse-verified_d4-dev/predictions/fuse/tsemin_admin_fr.jsonl.jsonl",
+    "rows": 168,
+    "order_matches_gold": true,
+    "label_length_mismatch": [],
+    "min": 0.0,
+    "max": 0.9742039343190969,
+    "sha256": "393d963a619dee206492afc0dc3ab2b6d16ad800afa663fdbe63f2279cc6dd6b"
+   }
+  },
+  "it": {
+   "documents_expected": 168,
+   "m2_missing_documents": [],
+   "d4_missing_documents": [],
+   "fuse_missing_documents": [],
+   "m2_blocks_asked": 5116,
+   "m2_blocks_judged": 5106,
+   "m2_blocks_unjudged": 10,
+   "m2_judged_status_counts": {
+    "covered": 1464,
+    "partly": 3045,
+    "absent": 597
+   },
+   "m2_documents_with_unjudged_blocks": [
+    {
+     "id": "admin_it_49",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_it_123",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_it_131",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_it_135",
+     "unjudged_blocks": 2,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_it_196",
+     "unjudged_blocks": 1,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_it_215",
+     "unjudged_blocks": 2,
+     "recorded_status": "ok"
+    }
+   ],
+   "d4_sides_expected": 336,
+   "d4_sides_complete": 336,
+   "d4_sides_missing": [],
+   "d4_length_mismatch": [],
+   "d4_alignment_counts": {
+    "exact": 672
+   },
+   "fuse_status_counts": {
+    "ok": 168
+   },
+   "fuse_sides_without_d4": 0,
+   "prediction_file": {
+    "path": "data/frozen_runs/20261007-113912-fuse-verified_d4-dev/predictions/fuse/tsemin_admin_it.jsonl.jsonl",
+    "rows": 168,
+    "order_matches_gold": true,
+    "label_length_mismatch": [],
+    "min": 0.0,
+    "max": 0.9596692348915706,
+    "sha256": "f9c05c2e88a44837ed50a329b574e2c87fa1a50fcafc39c5868a61a531097e6b"
+   }
+  }
+ },
+ "problems": [],
+ "warnings": [
+  "de: 12 of 5387 m2 blocks were not judged (kept the default 'no difference') in 8 documents, 5 of them recorded as ok",
+  "fr: 9 of 5228 m2 blocks were not judged (kept the default 'no difference') in 6 documents, 2 of them recorded as ok",
+  "it: 10 of 5116 m2 blocks were not judged (kept the default 'no difference') in 6 documents, 3 of them recorded as ok"
+ ]
+}

@@ -1,0 +1,25 @@
+@page { size: A4; }
+html { font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif; font-size: 9.5pt; line-height: 1.29; color: #111; }
+body { margin: 0; }
+h1 { font-size: 14.5pt; margin: 0 0 6pt; line-height: 1.2; font-family: "DejaVu Sans", Arial, sans-serif; }
+h2 { font-size: 11.2pt; margin: 9pt 0 3pt; font-family: "DejaVu Sans", Arial, sans-serif; break-after: avoid; }
+p { margin: 3pt 0; text-align: justify; hyphens: auto; }
+ul, ol { margin: 3pt 0; padding-left: 15pt; }
+li { margin: 1pt 0; text-align: justify; }
+table { border-collapse: collapse; margin: 4pt 0 5pt; font-size: 8.7pt; width: 100%; break-inside: avoid; font-family: "DejaVu Sans", Arial, sans-serif; }
+th, td { border-top: 0.5pt solid #999; border-bottom: 0.5pt solid #999; padding: 1.6pt 4pt; text-align: left; vertical-align: top; }
+th { background: #f0f0f0; }
+td:not(:first-child), th:not(:first-child) { text-align: right; white-space: nowrap; }
+table.left td, table.left th { text-align: left !important; white-space: normal !important; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 8.2pt; }
+img { width: 80%; margin: 2pt 10% 0; }
+img[alt='Figure 2'] { width: 96%; margin: 2pt 2% 0; }
+figure { margin: 4pt 0; }
+figcaption { display: none; }
+em { font-style: italic; }
+p:has(+ table) { break-after: auto; }
+h2 + p { break-before: avoid; }
+p:has(> img) { break-after: avoid; }
+h2#references + ul { font-size: 8.4pt; line-height: 1.22; }
+table.left { break-inside: auto; }
+table.left tr { break-inside: avoid; }

@@ -1,0 +1,187 @@
+{
+ "method": "fuse",
+ "model": "swiss-ai/Apertus-v1.5-8B",
+ "prompt_version": [
+  "fuse:verified+d4"
+ ],
+ "score": {
+  "macro_spearman": 0.32270616612097675,
+  "per_lang": {
+   "de": {
+    "lang": "de",
+    "n_docs": 56,
+    "n_scored_tokens": 40689,
+    "spearman": 0.412273988574291,
+    "precision": 0.27751196172248804,
+    "recall": 0.7832455939574273,
+    "f1": 0.4098203592814371,
+    "gold_positive_rate": 0.10737545774042125,
+    "pred_positive_rate": 0.30305487969721545,
+    "failed_docs": []
+   },
+   "fr": {
+    "lang": "fr",
+    "n_docs": 56,
+    "n_scored_tokens": 46623,
+    "spearman": 0.18890107549830507,
+    "precision": 0.1425334484246871,
+    "recall": 0.6401744608674582,
+    "f1": 0.2331553633676036,
+    "gold_positive_rate": 0.08851854235034211,
+    "pred_positive_rate": 0.39757201381292495,
+    "failed_docs": []
+   },
+   "it": {
+    "lang": "it",
+    "n_docs": 56,
+    "n_scored_tokens": 44768,
+    "spearman": 0.36694343429033427,
+    "precision": 0.31368384800826543,
+    "recall": 0.7441448801742919,
+    "f1": 0.4413308568198337,
+    "gold_positive_rate": 0.1640457469621158,
+    "pred_positive_rate": 0.38916190135811296,
+    "failed_docs": []
+   }
+  }
+ },
+ "score_table": "语种  篇数  计分词数  Spearman   准确率   召回率    F1   金标差异率  预测差异率  失败篇数\nde      56     40689     0.412    0.278    0.783  0.410      0.107      0.303        0\nfr      56     46623     0.189    0.143    0.640  0.233      0.089      0.398        0\nit      56     44768     0.367    0.314    0.744  0.441      0.164      0.389        0\n三个语种平均 Spearman: 0.323",
+ "statuses": {
+  "ok": 168
+ },
+ "quote_locations": {},
+ "block_statuses": {},
+ "cost": {
+  "documents": 168,
+  "calls": 2749,
+  "calls_from_cache": 666,
+  "prompt_tokens": 4791233,
+  "completion_tokens": 178926,
+  "prompt_tokens_per_doc": 28519.2,
+  "completion_tokens_per_doc": 1065.0,
+  "seconds_per_doc_uncached": 9.27
+ },
+ "not_ok": [],
+ "diagnostics": {
+  "de": {
+   "recall_by_position_decile": [
+    0.674,
+    0.824,
+    0.755,
+    0.769,
+    0.791,
+    0.757,
+    0.718,
+    0.829,
+    0.772,
+    0.872
+   ],
+   "gold_positive_by_decile": [
+    371,
+    386,
+    371,
+    389,
+    430,
+    333,
+    412,
+    515,
+    530,
+    632
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  },
+  "fr": {
+   "recall_by_position_decile": [
+    0.65,
+    0.703,
+    0.533,
+    0.534,
+    0.698,
+    0.709,
+    0.656,
+    0.65,
+    0.641,
+    0.615
+   ],
+   "gold_positive_by_decile": [
+    625,
+    481,
+    450,
+    251,
+    311,
+    378,
+    334,
+    329,
+    396,
+    572
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  },
+  "it": {
+   "recall_by_position_decile": [
+    0.702,
+    0.827,
+    0.76,
+    0.705,
+    0.738,
+    0.732,
+    0.669,
+    0.794,
+    0.794,
+    0.719
+   ],
+   "gold_positive_by_decile": [
+    765,
+    781,
+    717,
+    791,
+    722,
+    653,
+    755,
+    742,
+    724,
+    694
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  }
+ },
+ "failed_documents": [],
+ "params": {
+  "rule": "verified+d4",
+  "quantile": 0.7,
+  "verify_coef": 0.5,
+  "rank_coef": 0.75,
+  "window": 4,
+  "scale": 3.0
+ }
+}

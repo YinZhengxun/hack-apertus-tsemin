@@ -1,0 +1,45 @@
+You compare two language versions of the same Swiss government web page. The REFERENCE below is the complete {{REF_LANG}} version. The BLOCKS are numbered pieces of the {{BLOCK_LANG}} version. The two versions are supposed to say the same thing, but they often differ in small ways.
+
+For each block, decide:
+- "covered": everything in the block is expressed somewhere in the reference with the same meaning. Different word order, different sentence splitting, ordinary translation choices and grammar do not count as differences.
+- "absent": the block as a whole has no counterpart in the reference (for example a sentence, heading, remark, list item or link text that exists only in this version).
+- "partly": most of the block is expressed in the reference, but some words carry meaning that the reference does not express, or expresses differently. List those words in "quotes".
+
+Rules for "quotes":
+- Copy the words character by character from the block, in their original language. Never translate, correct or complete them.
+- Quote only the words that carry the difference, as few as possible: typically 1 to 6 words. A number, a name, an abbreviation, an adjective, a verb or a short phrase. Do not quote whole sentences.
+- Annotators of this task mark even small shifts in meaning: a more specific or more general term, a different verb, an added qualifier, information that is only in one version. Mark them too.
+- One block can have several quotes.
+
+Example (reference in German, blocks in English):
+REFERENCE: Mit den Nachbarländern werden regelmässige Kontakte auf Bundesrats- und Direktorenstufe gepflegt. Die Hotels in Graubünden waren Pioniere der Elektrifizierung unseres Landes. Medienmitteilungen
+BLOCKS:
+[a000] Regular talks are held with neighbouring countries at Federal Council and director level .
+[a001] The hotels in the canton of Grisons were pioneers in the electrification of Switzerland .
+[a002] Press releases in German
+[a003] The programme is available free of charge from the publisher .
+Answer:
+{"blocks": [
+ {"id": "a000", "status": "partly", "quotes": ["talks", "are held"]},
+ {"id": "a001", "status": "partly", "quotes": ["of Switzerland"]},
+ {"id": "a002", "status": "partly", "quotes": ["in German"]},
+ {"id": "a003", "status": "absent", "quotes": []}
+]}
+(Why: the reference speaks of "contacts" that are "maintained", not talks that are held; the reference says "our country", not Switzerland; "in German" exists only in the English version; block a003 has no counterpart at all.)
+
+Example (reference in English, blocks in German):
+REFERENCE: Calculation of penalties for light commercial vehicles. The parameters for calculating the 2025 target are not yet finalised. As soon as the Federal Council has adopted the implementing provisions, a calculation example will be published.
+BLOCKS:
+[b000] Sanktionsberechnung Lieferwagen und leichte Sattelschlepper
+[b001] Die relevanten Berechnungsparameter für die Zielvorgabe 2025 sind gegenwärtig noch nicht definitiv bekannt .
+[b002] Sobald der Bundesrat die Ausführungsbestimmungen verabschiedet hat , wird ein Berechnungsbeispiel aufgeschaltet .
+[b003] Zum Seitenanfang
+Answer:
+{"blocks": [
+ {"id": "b000", "status": "partly", "quotes": ["Lieferwagen und leichte Sattelschlepper"]},
+ {"id": "b001", "status": "partly", "quotes": ["definitiv bekannt"]},
+ {"id": "b002", "status": "covered", "quotes": []},
+ {"id": "b003", "status": "absent", "quotes": []}
+]}
+
+Answer with one JSON object of exactly this shape and nothing else: {"blocks": [{"id": "...", "status": "...", "quotes": ["..."]}]}. Include every block, in the given order.

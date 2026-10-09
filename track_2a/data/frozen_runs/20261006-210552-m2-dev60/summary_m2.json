@@ -1,0 +1,208 @@
+{
+ "method": "m2",
+ "model": "swiss-ai/Apertus-v1.5-8B",
+ "prompt_version": [
+  "m2_coverage_v1@16365cfb8e21"
+ ],
+ "score": {
+  "macro_spearman": 0.22096160108816065,
+  "per_lang": {
+   "de": {
+    "lang": "de",
+    "n_docs": 20,
+    "n_scored_tokens": 13560,
+    "spearman": 0.2506149523334456,
+    "precision": 0.3040415276232851,
+    "recall": 0.440150295222759,
+    "f1": 0.35964912280701755,
+    "gold_positive_rate": 0.13738938053097347,
+    "pred_positive_rate": 0.19889380530973452,
+    "failed_docs": []
+   },
+   "fr": {
+    "lang": "fr",
+    "n_docs": 20,
+    "n_scored_tokens": 15044,
+    "spearman": 0.18503692866625,
+    "precision": 0.20886442641946698,
+    "recall": 0.44616336633663367,
+    "f1": 0.2845303867403315,
+    "gold_positive_rate": 0.1074182398298325,
+    "pred_positive_rate": 0.22946024993352832,
+    "failed_docs": []
+   },
+   "it": {
+    "lang": "it",
+    "n_docs": 20,
+    "n_scored_tokens": 14377,
+    "spearman": 0.22723292226478636,
+    "precision": 0.30185295875672447,
+    "recall": 0.43459552495697074,
+    "f1": 0.3562610229276896,
+    "gold_positive_rate": 0.16164707518953886,
+    "pred_positive_rate": 0.23273283717048063,
+    "failed_docs": []
+   }
+  }
+ },
+ "score_table": "语种  篇数  计分词数  Spearman   准确率   召回率    F1   金标差异率  预测差异率  失败篇数\nde      20     13560     0.251    0.304    0.440  0.360      0.137      0.199        0\nfr      20     15044     0.185    0.209    0.446  0.285      0.107      0.229        0\nit      20     14377     0.227    0.302    0.435  0.356      0.162      0.233        0\n三个语种平均 Spearman: 0.221",
+ "statuses": {
+  "ok": 58,
+  "salvaged": 2
+ },
+ "quote_locations": {
+  "ok": 1036,
+  "elsewhere": 41,
+  "not_found": 45,
+  "ambiguous": 35
+ },
+ "block_statuses": {
+  "partly": 1085,
+  "covered": 596,
+  "absent": 251
+ },
+ "cost": {
+  "documents": 60,
+  "calls": 685,
+  "calls_from_cache": 3,
+  "prompt_tokens": 1248887,
+  "completion_tokens": 60034,
+  "prompt_tokens_per_doc": 20814.8,
+  "completion_tokens_per_doc": 1000.6,
+  "seconds_per_doc_uncached": 7.24
+ },
+ "not_ok": [
+  {
+   "id": "admin_de_100",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_153",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  }
+ ],
+ "diagnostics": {
+  "de": {
+   "recall_by_position_decile": [
+    0.297,
+    0.444,
+    0.474,
+    0.588,
+    0.23,
+    0.22,
+    0.571,
+    0.592,
+    0.21,
+    0.542
+   ],
+   "gold_positive_by_decile": [
+    148,
+    133,
+    213,
+    194,
+    122,
+    209,
+    245,
+    218,
+    143,
+    238
+   ],
+   "quote_length_median": 4,
+   "quote_length_p90": 10,
+   "n_quotes_located": 381,
+   "tier_precision": {
+    "absent_block": 0.53,
+    "quote": 0.162
+   },
+   "tier_tokens": {
+    "absent_block": 1040,
+    "quote": 1657
+   },
+   "spearman_absent_first": 0.276,
+   "spearman_quote_first": 0.2224
+  },
+  "fr": {
+   "recall_by_position_decile": [
+    0.161,
+    0.407,
+    0.371,
+    0.563,
+    0.263,
+    0.463,
+    0.564,
+    0.633,
+    0.681,
+    0.455
+   ],
+   "gold_positive_by_decile": [
+    112,
+    167,
+    286,
+    215,
+    160,
+    121,
+    133,
+    98,
+    113,
+    211
+   ],
+   "quote_length_median": 4,
+   "quote_length_p90": 11,
+   "n_quotes_located": 356,
+   "tier_precision": {
+    "absent_block": 0.268,
+    "quote": 0.158
+   },
+   "tier_tokens": {
+    "absent_block": 1607,
+    "quote": 1845
+   },
+   "spearman_absent_first": 0.1959,
+   "spearman_quote_first": 0.1711
+  },
+  "it": {
+   "recall_by_position_decile": [
+    0.098,
+    0.309,
+    0.468,
+    0.6,
+    0.173,
+    0.371,
+    0.649,
+    0.698,
+    0.291,
+    0.453
+   ],
+   "gold_positive_by_decile": [
+    214,
+    204,
+    205,
+    205,
+    179,
+    194,
+    336,
+    245,
+    189,
+    353
+   ],
+   "quote_length_median": 4,
+   "quote_length_p90": 10,
+   "n_quotes_located": 375,
+   "tier_precision": {
+    "absent_block": 0.401,
+    "quote": 0.207
+   },
+   "tier_tokens": {
+    "absent_block": 1635,
+    "quote": 1711
+   },
+   "spearman_absent_first": 0.2446,
+   "spearman_quote_first": 0.2059
+  }
+ },
+ "failed_documents": []
+}

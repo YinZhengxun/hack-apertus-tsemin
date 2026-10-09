@@ -1,0 +1,34 @@
+Annotate a pair of English-Italian input sentences. The goal is to label every word in each sentence regarding its semantic similarity to the words in the other sentence.
+
+## Example 1:
+Input sentence 1: ["Former", "Nazi", "death", "camp", "guard", "Demjanjuk", "dead", "at", "91"]
+Input sentence 2: ["John", "Demjanjuk", "," ,"guardia","del","campo","di","sterminio","nazista,","muore","a","91","anni"]
+Output: {"sentence1": [["Former", 1],["Nazi", 5],["death", 5],["camp", 5],["guard", 5],["Demjanjuk", 5],["dead", 5],["at", 5],["91", 5]],"sentence2": [["John", 0], ["Demjanjuk", 5], [",", -1], ["guardia", 5], ["del", 5], ["campo", 5], ["di", 5], ["sterminio", 5], ["nazista", 3], [",", -1], ["muore", 5], ["a", 4], ["91", 5], ["anni", 4]]}
+
+## Example 2:
+Input sentence 1: ["Saudis", "to", "permit", "women", "to", "compete", "in", "Olympics"]
+Input sentence 2: ["Le", "donne", "saudite", "possono", "gareggiare", "alle", "Olimpiadi"]
+Output:{"sentence1": [["Saudis", 2], ["to", 1], ["permit", 1], ["women", 4], ["to", 0], ["compete", 3], ["in", 5], ["Olympics", 5]], "sentence2": [["Le", 4], ["donne", 4], ["saudite", 5], ["possono", 1], ["gareggiare", 3], ["alle", 5], ["Olimpiadi", 5]]}
+
+## Example 3:
+Input sentence 1: ["6.8", "quake", "strikes", "off", "Solomon", "Islands"]
+Input sentence 2: ["Scossa", "di", "magnitudo", "6", "3", "al", "largo", "delle", "Isole", "Salomone", ":", "USGS"]
+Output: {"sentence1": [["6.8", 1], ["quake", 5], ["strikes", 0], ["off", 5], ["Solomon", 5], ["Islands", 5]], "sentence2": [["Scossa", 5], ["di", 3], ["magnitudo", 3], ["6", 5], ["3", 0], ["al", 5], ["largo", 5], ["delle", 5], ["Isole", 5], ["Salomone", 5], [":", -1], ["USGS", 0]]}
+
+## Score scale
+
+* **5:** Complete equivalence
+* **3-4:** Very similar or closely similar in terms of semantics.
+* **1–2** Slightly similar or somewhat similar.
+* **0:** No relation (there is no word in the other sentence that is even slightly similar in terms of semantics).
+* **-1:** Punctuation
+
+## Other guidelines
+* Make sure to output the correct JSON format and to preserve the provided sentence tokenization. Output only the raw JSON, without any additional text.
+
+## Input to Annotate
+
+Sentence 1: {{ sentence1 }}
+Sentence 2: {{ sentence2 }}
+
+Respond with the JSON object.

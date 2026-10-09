@@ -1,0 +1,193 @@
+{
+ "method": "d4",
+ "model": "swiss-ai/Apertus-v1.5-8B",
+ "prompt_version": [
+  "d4_readback_v1"
+ ],
+ "score": {
+  "macro_spearman": 0.2000851291541752,
+  "per_lang": {
+   "de": {
+    "lang": "de",
+    "n_docs": 20,
+    "n_scored_tokens": 13560,
+    "spearman": 0.23232756004598912,
+    "precision": 0.13738938053097347,
+    "recall": 1.0,
+    "f1": 0.2415872398366077,
+    "gold_positive_rate": 0.13738938053097347,
+    "pred_positive_rate": 1.0,
+    "failed_docs": []
+   },
+   "fr": {
+    "lang": "fr",
+    "n_docs": 20,
+    "n_scored_tokens": 15044,
+    "spearman": 0.1375616675644761,
+    "precision": 0.10742538057568304,
+    "recall": 1.0,
+    "f1": 0.19400924425235608,
+    "gold_positive_rate": 0.1074182398298325,
+    "pred_positive_rate": 0.9999335283169369,
+    "failed_docs": []
+   },
+   "it": {
+    "lang": "it",
+    "n_docs": 20,
+    "n_scored_tokens": 14377,
+    "spearman": 0.23036615985206038,
+    "precision": 0.16505062027662912,
+    "recall": 0.9961273666092944,
+    "f1": 0.28318042813455657,
+    "gold_positive_rate": 0.16164707518953886,
+    "pred_positive_rate": 0.9755860054253321,
+    "failed_docs": []
+   }
+  }
+ },
+ "score_table": "语种  篇数  计分词数  Spearman   准确率   召回率    F1   金标差异率  预测差异率  失败篇数\nde      20     13560     0.232    0.137    1.000  0.242      0.137      1.000        0\nfr      20     15044     0.138    0.107    1.000  0.194      0.107      1.000        0\nit      20     14377     0.230    0.165    0.996  0.283      0.162      0.976        0\n三个语种平均 Spearman: 0.200",
+ "statuses": {
+  "ok": 58,
+  "salvaged": 2
+ },
+ "quote_locations": {},
+ "block_statuses": {},
+ "cost": {
+  "documents": 60,
+  "calls": 240,
+  "calls_from_cache": 40,
+  "prompt_tokens": 221515,
+  "completion_tokens": 238,
+  "prompt_tokens_per_doc": 3691.9,
+  "completion_tokens_per_doc": 4.0,
+  "seconds_per_doc_uncached": 2.6
+ },
+ "not_ok": [
+  {
+   "id": "admin_fr_135",
+   "status": "salvaged",
+   "error": "1 of 4 calls failed",
+   "finish_reason": null
+  },
+  {
+   "id": "admin_it_175",
+   "status": "salvaged",
+   "error": "1 of 4 calls failed",
+   "finish_reason": "stop"
+  }
+ ],
+ "diagnostics": {
+  "de": {
+   "recall_by_position_decile": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "gold_positive_by_decile": [
+    148,
+    133,
+    213,
+    194,
+    122,
+    209,
+    245,
+    218,
+    143,
+    238
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  },
+  "fr": {
+   "recall_by_position_decile": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "gold_positive_by_decile": [
+    112,
+    167,
+    286,
+    215,
+    160,
+    121,
+    133,
+    98,
+    113,
+    211
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  },
+  "it": {
+   "recall_by_position_decile": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.964,
+    1.0,
+    1.0,
+    1.0,
+    0.994
+   ],
+   "gold_positive_by_decile": [
+    214,
+    204,
+    205,
+    205,
+    179,
+    194,
+    336,
+    245,
+    189,
+    353
+   ],
+   "quote_length_median": null,
+   "quote_length_p90": null,
+   "n_quotes_located": 0,
+   "tier_precision": {
+    "absent_block": null,
+    "quote": null
+   },
+   "tier_tokens": {
+    "absent_block": 0,
+    "quote": 0
+   }
+  }
+ },
+ "failed_documents": []
+}

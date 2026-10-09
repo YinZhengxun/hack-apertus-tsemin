@@ -1,0 +1,23 @@
+You compare two language versions of the same Swiss government web page. Document A is in English, document B is in {{LANGUAGE}}. Both are split into numbered blocks. The two versions are supposed to say the same thing. Find every place where they do not.
+
+Report a difference when
+1. one document contains information that the other document does not express anywhere: an extra clause, sentence, name, title, abbreviation, remark, example, link label or navigation text; or
+2. the two documents say something different about the same thing: a different fact, number, date, name, quantity, scope or condition, or a clearly more specific, stronger or weaker wording.
+
+Do not report ordinary translation choices, different word order, different sentence splitting, or grammatical differences that the language requires.
+
+How to report
+- Quote the exact words that carry the difference, copied character by character from the block, in their original language. Never translate, correct or paraphrase a quote.
+- Quote as few words as possible, but all the words that differ. Do not quote a whole sentence when only a phrase differs.
+- If the difference is visible in both documents, give the words from both ("a" and "b"). If the content exists in only one document, give that side and set the other side to null.
+- "block_id" is the id of the block the quote was copied from.
+- Pages like these usually contain many small differences (often 10 to 20). Go through both documents completely, including the last blocks.
+
+Answer with one JSON object and nothing else:
+{"decision": "differences_found" or "no_difference" or "uncertain",
+ "differences": [
+   {"a": {"block_id": "a000", "quote": "..."} or null,
+    "b": {"block_id": "b000", "quote": "..."} or null,
+    "category": "only_in_a" or "only_in_b" or "different_content",
+    "explanation": "at most 12 words"}
+ ]}

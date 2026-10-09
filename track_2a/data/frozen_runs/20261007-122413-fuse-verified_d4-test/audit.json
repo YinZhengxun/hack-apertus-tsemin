@@ -1,0 +1,151 @@
+{
+ "fuse_run": "data/frozen_runs/20261007-122413-fuse-verified_d4-test",
+ "m2_run": "data/frozen_runs/20261007-114305-m2-test",
+ "d4_run": "data/frozen_runs/20261007-122232-d4-test",
+ "languages": {
+  "de": {
+   "documents_expected": 56,
+   "m2_missing_documents": [],
+   "d4_missing_documents": [],
+   "fuse_missing_documents": [],
+   "m2_blocks_asked": 2035,
+   "m2_blocks_judged": 2032,
+   "m2_blocks_unjudged": 3,
+   "m2_judged_status_counts": {
+    "partly": 1098,
+    "absent": 261,
+    "covered": 673
+   },
+   "m2_documents_with_unjudged_blocks": [
+    {
+     "id": "admin_de_204",
+     "unjudged_blocks": 3,
+     "recorded_status": "salvaged"
+    }
+   ],
+   "d4_sides_expected": 112,
+   "d4_sides_complete": 112,
+   "d4_sides_missing": [],
+   "d4_length_mismatch": [],
+   "d4_alignment_counts": {
+    "exact": 224
+   },
+   "fuse_status_counts": {
+    "ok": 56
+   },
+   "fuse_sides_without_d4": 0,
+   "prediction_file": {
+    "path": "data/frozen_runs/20261007-122413-fuse-verified_d4-test/predictions/fuse/tsemin_admin_de.jsonl.jsonl",
+    "rows": 56,
+    "order_matches_gold": true,
+    "label_length_mismatch": [],
+    "min": 0.0,
+    "max": 0.9485889516183514,
+    "sha256": "ea93e63f09d11f75f8754e0cb44f66b1eb2f9eef6b8bf1668bc0373071b7a7a3"
+   }
+  },
+  "fr": {
+   "documents_expected": 56,
+   "m2_missing_documents": [],
+   "d4_missing_documents": [],
+   "fuse_missing_documents": [],
+   "m2_blocks_asked": 1952,
+   "m2_blocks_judged": 1949,
+   "m2_blocks_unjudged": 3,
+   "m2_judged_status_counts": {
+    "partly": 1167,
+    "covered": 533,
+    "absent": 249
+   },
+   "m2_documents_with_unjudged_blocks": [
+    {
+     "id": "admin_fr_166",
+     "unjudged_blocks": 2,
+     "recorded_status": "ok"
+    },
+    {
+     "id": "admin_fr_179",
+     "unjudged_blocks": 1,
+     "recorded_status": "ok"
+    }
+   ],
+   "d4_sides_expected": 112,
+   "d4_sides_complete": 112,
+   "d4_sides_missing": [],
+   "d4_length_mismatch": [],
+   "d4_alignment_counts": {
+    "exact": 224
+   },
+   "fuse_status_counts": {
+    "ok": 56
+   },
+   "fuse_sides_without_d4": 0,
+   "prediction_file": {
+    "path": "data/frozen_runs/20261007-122413-fuse-verified_d4-test/predictions/fuse/tsemin_admin_fr.jsonl.jsonl",
+    "rows": 56,
+    "order_matches_gold": true,
+    "label_length_mismatch": [],
+    "min": 0.0,
+    "max": 0.9197930675811948,
+    "sha256": "f265b5131d10f7a5b4b28694c1aa88875ee50f171f530ea9bd4df5f4f6b1a6dc"
+   }
+  },
+  "it": {
+   "documents_expected": 56,
+   "m2_missing_documents": [],
+   "d4_missing_documents": [],
+   "fuse_missing_documents": [],
+   "m2_blocks_asked": 1901,
+   "m2_blocks_judged": 1896,
+   "m2_blocks_unjudged": 5,
+   "m2_judged_status_counts": {
+    "partly": 1163,
+    "covered": 500,
+    "absent": 233
+   },
+   "m2_documents_with_unjudged_blocks": [
+    {
+     "id": "admin_it_31",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_it_56",
+     "unjudged_blocks": 1,
+     "recorded_status": "salvaged"
+    },
+    {
+     "id": "admin_it_204",
+     "unjudged_blocks": 2,
+     "recorded_status": "salvaged"
+    }
+   ],
+   "d4_sides_expected": 112,
+   "d4_sides_complete": 112,
+   "d4_sides_missing": [],
+   "d4_length_mismatch": [],
+   "d4_alignment_counts": {
+    "exact": 224
+   },
+   "fuse_status_counts": {
+    "ok": 56
+   },
+   "fuse_sides_without_d4": 0,
+   "prediction_file": {
+    "path": "data/frozen_runs/20261007-122413-fuse-verified_d4-test/predictions/fuse/tsemin_admin_it.jsonl.jsonl",
+    "rows": 56,
+    "order_matches_gold": true,
+    "label_length_mismatch": [],
+    "min": 0.0,
+    "max": 0.9014425546304162,
+    "sha256": "0118203283f35617a01d983e980f4211203e111b5d72edb1228e4d1a0d5043f0"
+   }
+  }
+ },
+ "problems": [],
+ "warnings": [
+  "de: 3 of 2035 m2 blocks were not judged (kept the default 'no difference') in 1 documents, 0 of them recorded as ok",
+  "fr: 3 of 1952 m2 blocks were not judged (kept the default 'no difference') in 2 documents, 2 of them recorded as ok",
+  "it: 5 of 1901 m2 blocks were not judged (kept the default 'no difference') in 3 documents, 0 of them recorded as ok"
+ ]
+}

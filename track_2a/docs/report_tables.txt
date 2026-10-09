@@ -1,0 +1,87 @@
+== Main table: Spearman de fr it | mean ==
+dev (168/lang)
+  Fuse (submitted)                                 0.404 0.227 0.389 | 0.340
+  D4-contrastive                                   0.377 0.220 0.362 | 0.319
+  D4-raw (s_c, max over +-1 word)                  0.228 0.145 0.233 | 0.202
+  M2-verified (0/1)                                0.373 0.152 0.307 | 0.277
+  M2-absent (0/1)                                  0.303 0.121 0.254 | 0.226
+  CTFAlign                                         0.346 0.208 0.365 | 0.306
+  mmBERT-SimCSE (dev only)                         0.244 0.154 0.266 | 0.221
+
+dev/train (134/lang)
+  Fuse (submitted)                                 0.412 0.219 0.398 | 0.343
+  D4-contrastive                                   0.381 0.213 0.364 | 0.319
+  D4-raw (s_c, max over +-1 word)                  0.226 0.138 0.227 | 0.197
+  M2-verified (0/1)                                0.387 0.149 0.333 | 0.290
+  M2-absent (0/1)                                  0.319 0.122 0.278 | 0.240
+  CTFAlign                                         0.360 0.203 0.379 | 0.314
+  mmBERT-SimCSE (dev only)                         0.252 0.148 0.269 | 0.223
+
+dev/val (34/lang)
+  Fuse (submitted)                                 0.362 0.259 0.343 | 0.321
+  D4-contrastive                                   0.355 0.254 0.344 | 0.318
+  D4-raw (s_c, max over +-1 word)                  0.234 0.173 0.260 | 0.222
+  M2-verified (0/1)                                0.295 0.172 0.158 | 0.208
+  M2-absent (0/1)                                  0.217 0.120 0.113 | 0.150
+  CTFAlign                                         0.280 0.229 0.298 | 0.269
+  mmBERT-SimCSE (dev only)                         0.201 0.177 0.249 | 0.209
+
+dev60 (20/lang, parameter selection)
+  Fuse (submitted)                                 0.437 0.289 0.400 | 0.375
+  D4-contrastive                                   0.402 0.265 0.363 | 0.343
+  D4-raw (s_c, max over +-1 word)                  0.232 0.138 0.223 | 0.197
+  M2-verified (0/1)                                0.429 0.268 0.377 | 0.358
+  M2-absent (0/1)                                  0.348 0.191 0.260 | 0.266
+  CTFAlign                                         0.366 0.261 0.373 | 0.333
+  mmBERT-SimCSE (dev only)                         0.256 0.185 0.272 | 0.238
+  b0s (paper prompt, Apertus-8B)                   -0.043 -0.015 0.025 | -0.011
+
+test (56/lang)
+  Fuse (submitted)                                 0.412 0.189 0.367 | 0.323
+  D4-contrastive                                   0.398 0.176 0.359 | 0.311
+  D4-raw (s_c, max over +-1 word)                  0.238 0.128 0.236 | 0.201
+  M2-verified (0/1)                                0.344 0.147 0.247 | 0.246
+  M2-absent (0/1)                                  0.325 0.108 0.260 | 0.231
+  CTFAlign                                         0.330 0.189 0.353 | 0.291
+  b0s (paper prompt, Apertus-8B)                   -0.019 0.004 -0.030 | -0.015
+
+== Ablations of the output layer (full dev and test; parameters were chosen on dev60 only) ==
+dev (168/lang)
+  Fuse (frozen)                                    0.404 0.227 0.389 | 0.340
+    without verification (all M2-absent on top)    0.386 0.214 0.369 | 0.323
+    negatives keep their order (no floor)          0.361 0.218 0.373 | 0.317
+  D4-contrastive (frozen)                          0.377 0.220 0.362 | 0.319
+    no s_u discount (coef 0)                       0.281 0.185 0.285 | 0.250
+    no smoothing (window 0)                        0.300 0.176 0.298 | 0.258
+    negatives keep their order (no floor)          0.339 0.212 0.349 | 0.300
+    s_u only (no other document)                   0.017 0.012 0.012 | 0.014
+
+test (56/lang)
+  Fuse (frozen)                                    0.412 0.189 0.367 | 0.323
+    without verification (all M2-absent on top)    0.401 0.175 0.361 | 0.312
+    negatives keep their order (no floor)          0.359 0.185 0.352 | 0.298
+  D4-contrastive (frozen)                          0.398 0.176 0.359 | 0.311
+    no s_u discount (coef 0)                       0.301 0.156 0.287 | 0.248
+    no smoothing (window 0)                        0.307 0.139 0.285 | 0.244
+    negatives keep their order (no floor)          0.346 0.173 0.343 | 0.287
+    s_u only (no other document)                   0.045 0.014 0.015 | 0.025
+
+== Share of words in verified absent blocks (score >= 0.5) and gold-difference rate inside them ==
+  dev (168/lang)   de: flagged 4.8% of scored words, gold rate inside 0.65 (overall 0.127)
+  dev (168/lang)   fr: flagged 5.8% of scored words, gold rate inside 0.27 (overall 0.102)
+  dev (168/lang)   it: flagged 6.3% of scored words, gold rate inside 0.59 (overall 0.182)
+  test (56/lang)   de: flagged 5.2% of scored words, gold rate inside 0.55 (overall 0.107)
+  test (56/lang)   fr: flagged 6.2% of scored words, gold rate inside 0.24 (overall 0.089)
+  test (56/lang)   it: flagged 6.1% of scored words, gold rate inside 0.49 (overall 0.164)
+
+== Cost per document pair (from the run logs; 2 documents in parallel, cached calls excluded from latency) ==
+  dev   m2  docs 504 | calls 11.0 | prompt tok  20302 | completion tok   946 | latency 5.9 s
+  dev   d4  docs 504 | calls 4.0 | prompt tok   3653 | completion tok     4 | latency 0.0 s
+  test  m2  docs 168 | calls 12.4 | prompt tok  24522 | completion tok  1061 | latency 9.3 s
+  test  d4  docs 168 | calls 4.0 | prompt tok   3998 | completion tok     4 | latency 0.0 s
+  test  b0s docs 168 | calls 4.1 | prompt tok   6994 | completion tok  8913 | latency 54.4 s
+
+== m2 block judgements: share of gold-difference words per status (full dev) ==
+  de: partly 58% of words, gold rate 0.12  covered 34% of words, gold rate 0.07  absent 7% of words, gold rate 0.46  missing_in_answer 0% of words, gold rate 0.09  unreadable 0% of words, gold rate 0.00
+  fr: partly 63% of words, gold rate 0.10  covered 28% of words, gold rate 0.07  absent 9% of words, gold rate 0.21  missing_in_answer 0% of words, gold rate 0.04
+  it: partly 63% of words, gold rate 0.17  covered 28% of words, gold rate 0.12  absent 10% of words, gold rate 0.45  missing_in_answer 0% of words, gold rate 0.26

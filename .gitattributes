@@ -1,0 +1,6 @@
+# Line endings: LF everywhere (the Docker entry point and the Makefile must not get CRLF on a Windows checkout,
+# and the sha256 of the prediction files in the README must match on every platform).
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.gz binary

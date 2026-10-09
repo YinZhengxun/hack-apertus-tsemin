@@ -1,0 +1,154 @@
+方法 b0s | 模型 swiss-ai/Apertus-v1.5-8B | 提示词 b0_paper_template_short@3d65ebd96ea3, b0_paper_template_short@79e6cd0c9ae8, b0_paper_template_short@ace9e0f82646
+语种  篇数  计分词数  Spearman   准确率   召回率    F1   金标差异率  预测差异率  失败篇数
+de      56     40689    -0.019    0.095    0.148  0.115      0.107      0.168        0
+fr      56     46623     0.004    0.091    0.187  0.122      0.089      0.182        0
+it      56     44768    -0.030    0.145    0.197  0.167      0.164      0.223        0
+三个语种平均 Spearman: -0.015
+文档状态: invalid_answer=26, ok=25, salvaged=117
+  de: 按文档位置十等分的召回: 0.24 0.15 0.14 0.07 0.07 0.20 0.15 0.15 0.13 0.19
+  fr: 按文档位置十等分的召回: 0.19 0.23 0.21 0.21 0.14 0.21 0.09 0.20 0.22 0.15
+  it: 按文档位置十等分的召回: 0.17 0.20 0.22 0.22 0.16 0.19 0.17 0.22 0.21 0.22
+开销: 168 篇, 691 次调用 (其中缓存 0), 每篇进 6994 / 出 8913 token, 每篇 54.4 秒
+  未正常完成: admin_de_1  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_6  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_7  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_8  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_11  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_24  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_26  salvaged  4 of 10 chunks failed (ok=6, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_de_28  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_31  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_35  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_39  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_de_40  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_50  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_55  salvaged  2 of 3 chunks failed (invalid_answer=1, ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_56  salvaged  3 of 6 chunks failed (ok=3, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_de_57  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_59  salvaged  3 of 4 chunks failed (invalid_answer=1, ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_67  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_70  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_71  salvaged  1 of 6 chunks failed (ok=5, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_86  salvaged  3 of 10 chunks failed (ok=7, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_de_87  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_91  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_97  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_107  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_108  salvaged  4 of 9 chunks failed (ok=5, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_de_114  salvaged  6 of 7 chunks failed (ok=1, truncated=6); their tokens are scored as no difference
+  未正常完成: admin_de_117  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_129  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_137  salvaged  4 of 6 chunks failed (invalid_answer=1, ok=2, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_de_143  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_151  salvaged  4 of 7 chunks failed (ok=3, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_de_154  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_de_163  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_166  salvaged  4 of 11 chunks failed (ok=7, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_de_173  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_de_178  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_179  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_183  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_188  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_de_201  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_204  salvaged  13 of 21 chunks failed (ok=8, truncated=13); their tokens are scored as no difference
+  未正常完成: admin_de_205  salvaged  3 of 6 chunks failed (ok=3, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_de_208  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_211  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_212  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_214  salvaged  1 of 6 chunks failed (ok=5, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_220  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_de_221  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_1  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_6  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_fr_7  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_8  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_11  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_22  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_fr_23  salvaged  1 of 5 chunks failed (ok=4, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_26  salvaged  3 of 10 chunks failed (ok=7, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_28  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_31  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_39  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_40  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_50  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_55  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_56  salvaged  5 of 6 chunks failed (ok=1, truncated=5); their tokens are scored as no difference
+  未正常完成: admin_fr_57  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_59  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_67  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_70  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_71  salvaged  3 of 7 chunks failed (ok=4, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_86  salvaged  6 of 10 chunks failed (ok=4, truncated=6); their tokens are scored as no difference
+  未正常完成: admin_fr_87  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_97  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_107  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_108  salvaged  4 of 10 chunks failed (ok=6, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_fr_114  salvaged  5 of 7 chunks failed (ok=2, truncated=5); their tokens are scored as no difference
+  未正常完成: admin_fr_117  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_129  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_fr_137  salvaged  2 of 7 chunks failed (ok=5, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_143  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_fr_150  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_fr_151  salvaged  2 of 7 chunks failed (ok=5, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_154  salvaged  2 of 6 chunks failed (ok=4, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_166  salvaged  6 of 12 chunks failed (ok=6, truncated=6); their tokens are scored as no difference
+  未正常完成: admin_fr_173  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_178  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_fr_179  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_183  salvaged  4 of 5 chunks failed (ok=1, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_fr_188  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_201  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_204  salvaged  11 of 22 chunks failed (ok=11, truncated=11); their tokens are scored as no difference
+  未正常完成: admin_fr_205  salvaged  3 of 6 chunks failed (ok=3, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_fr_208  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_fr_211  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_212  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_214  salvaged  1 of 6 chunks failed (ok=5, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_220  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_fr_221  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_1  salvaged  1 of 3 chunks failed (invalid_answer=1, ok=2); their tokens are scored as no difference
+  未正常完成: admin_it_7  salvaged  1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_8  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_11  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_22  salvaged  1 of 2 chunks failed (invalid_answer=1, ok=1); their tokens are scored as no difference
+  未正常完成: admin_it_23  salvaged  1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_24  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_26  salvaged  4 of 10 chunks failed (invalid_answer=1, ok=6, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_28  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_it_31  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_35  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_39  salvaged  3 of 4 chunks failed (ok=1, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_40  salvaged  1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_55  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_56  salvaged  5 of 6 chunks failed (ok=1, truncated=5); their tokens are scored as no difference
+  未正常完成: admin_it_57  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_59  salvaged  1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_67  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_70  salvaged  2 of 3 chunks failed (ok=1, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_it_71  salvaged  3 of 6 chunks failed (ok=3, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_86  salvaged  2 of 10 chunks failed (ok=8, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_it_88  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_91  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_97  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_107  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_108  salvaged  5 of 9 chunks failed (invalid_answer=1, ok=4, truncated=4); their tokens are scored as no difference
+  未正常完成: admin_it_114  salvaged  6 of 7 chunks failed (ok=1, truncated=6); their tokens are scored as no difference
+  未正常完成: admin_it_117  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_129  salvaged  1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_137  salvaged  2 of 7 chunks failed (ok=5, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_it_143  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_154  salvaged  3 of 5 chunks failed (ok=2, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_163  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_166  salvaged  3 of 12 chunks failed (ok=9, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_173  salvaged  1 of 4 chunks failed (ok=3, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_178  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_it_183  salvaged  1 of 5 chunks failed (ok=4, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_188  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_189  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_201  invalid_answer  no chunk produced a readable answer
+  未正常完成: admin_it_204  salvaged  8 of 21 chunks failed (ok=13, truncated=8); their tokens are scored as no difference
+  未正常完成: admin_it_205  salvaged  3 of 6 chunks failed (ok=3, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_208  salvaged  2 of 4 chunks failed (ok=2, truncated=2); their tokens are scored as no difference
+  未正常完成: admin_it_211  salvaged  1 of 2 chunks failed (ok=1, truncated=1); their tokens are scored as no difference
+  未正常完成: admin_it_214  salvaged  3 of 6 chunks failed (ok=3, truncated=3); their tokens are scored as no difference
+  未正常完成: admin_it_220  salvaged  1 of 3 chunks failed (ok=2, truncated=1); their tokens are scored as no difference

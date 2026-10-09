@@ -1,0 +1,32 @@
+{
+ "name": "smoke12",
+ "purpose": "12 development documents (4 per language, the same 4 English pages) for an end-to-end test of the pipeline",
+ "split": "dev/train",
+ "how_chosen": "documents with at least 5 gold difference tokens in every language, sorted by mean length; the ones at the 15th, 40th, 65th and 90th percentile",
+ "mean_tokens_per_pair": {
+  "148": 331,
+  "122": 598,
+  "175": 920,
+  "125": 1773
+ },
+ "ids": {
+  "de": [
+   "admin_de_148",
+   "admin_de_122",
+   "admin_de_175",
+   "admin_de_125"
+  ],
+  "fr": [
+   "admin_fr_148",
+   "admin_fr_122",
+   "admin_fr_175",
+   "admin_fr_125"
+  ],
+  "it": [
+   "admin_it_148",
+   "admin_it_122",
+   "admin_it_175",
+   "admin_it_125"
+  ]
+ }
+}

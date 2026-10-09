@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:"DejaVu Sans",Arial,sans-serif;color:#1f2328}
+#fig{width:1000px;height:330px;position:relative}
+.box{position:absolute;border:1.6px solid #57606a;border-radius:8px;padding:8px 10px;box-sizing:border-box;font-size:14px;line-height:1.35;background:#fff}
+.box h4{margin:0 0 4px;font-size:15px}
+.in{left:8px;top:62px;width:150px;height:205px;background:#f6f8fa}
+.d4{left:215px;top:6px;width:330px;height:180px;border-color:#0969da;border-width:2.2px;background:#eef5ff}
+.m2{left:215px;top:198px;width:330px;height:128px;border-color:#9a6700;border-style:dashed;background:#fff8e6}
+.fu{left:605px;top:40px;width:240px;height:250px;border-color:#1a7f37;background:#effaf1}
+.out{left:880px;top:92px;width:112px;height:146px;background:#f6f8fa}
+.small{font-size:12.5px;color:#57606a}
+svg{position:absolute;left:0;top:0}
+</style></head><body><div id="fig">
+<svg width="1000" height="330"><defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<g stroke="#57606a" stroke-width="1.8" fill="none" marker-end="url(#a)">
+<path d="M158,150 C185,150 185,87 213,87"/><path d="M158,180 C185,180 185,262 213,262" stroke-dasharray="6,4"/>
+<path d="M545,87 C575,87 575,130 603,130" stroke-width="2.4"/><path d="M545,262 C575,262 575,205 603,205" stroke-dasharray="6,4"/>
+<path d="M845,165 L878,165"/></g></svg>
+<div class="box in"><h4>Document pair</h4>A: English page<br>B: German / French / Italian version<div class="small" style="margin-top:6px">whitespace-tokenised, as in the dataset</div></div>
+<div class="box d4"><h4>D4 · read-back probabilities (core)</h4>X prefilled as the assistant's translation of Y; <code>prompt_logprobs</code> → surprisal of each word with Y (<i>s</i><sub>c</sub>) and without Y (<i>s</i><sub>u</sub>). Signal: <i>s</i><sub>c</sub> − 0.75 <i>s</i><sub>u</sub>, mean over ±4 words, floor at 0<div class="small" style="margin-top:5px">4 requests per pair (2 sides × with / without), 1 decoded token each</div></div>
+<div class="box m2"><h4>M2 · block judgement (optional tier)</h4>Blocks ≤ 60 words; per request: other side as reference + 3 blocks → status <i>covered / partly / absent</i><div class="small" style="margin-top:5px">≈ 11 requests, ≈ 1,000 generated tokens per pair · only <i>absent</i> is used</div></div>
+<div class="box fu"><h4>Fuse</h4>① <b>order</b> every word by the D4 signal → scores in [0, 0.49)<br><br>② <b>tier</b> (optional): an <i>absent</i> block whose mean <i>s</i><sub>c</sub> − 0.5 <i>s</i><sub>u</sub> reaches the 70th percentile of the pair is ranked on top → [0.5, 1)<div class="small" style="margin-top:5px">D4 alone = step ① only</div></div>
+<div class="box out"><h4>Output</h4>one score per word, both sides<div class="small" style="margin-top:4px">official 5-field JSONL</div></div>
+</div></body></html>

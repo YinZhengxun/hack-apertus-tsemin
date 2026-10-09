@@ -1,0 +1,274 @@
+{
+ "method": "m2",
+ "model": "swiss-ai/Apertus-v1.5-8B",
+ "prompt_version": [
+  "m2_coverage_v1@16365cfb8e21"
+ ],
+ "score": {
+  "macro_spearman": 0.19153533069768436,
+  "per_lang": {
+   "de": {
+    "lang": "de",
+    "n_docs": 168,
+    "n_scored_tokens": 108945,
+    "spearman": 0.23178571390231673,
+    "precision": 0.2812361159105494,
+    "recall": 0.4120795660036166,
+    "f1": 0.33431136670383194,
+    "gold_positive_rate": 0.12689889393730783,
+    "pred_positive_rate": 0.1859378585524806,
+    "failed_docs": []
+   },
+   "fr": {
+    "lang": "fr",
+    "n_docs": 168,
+    "n_scored_tokens": 124262,
+    "spearman": 0.13039053251298902,
+    "precision": 0.17661145479944124,
+    "recall": 0.35082851026718465,
+    "f1": 0.23494743548900923,
+    "gold_positive_rate": 0.10150327533759315,
+    "pred_positive_rate": 0.20163042603531248,
+    "failed_docs": []
+   },
+   "it": {
+    "lang": "it",
+    "n_docs": 168,
+    "n_scored_tokens": 118735,
+    "spearman": 0.21242974567774728,
+    "precision": 0.32737058730410007,
+    "recall": 0.3825909994912354,
+    "f1": 0.352833287124912,
+    "gold_positive_rate": 0.1820945803680465,
+    "pred_positive_rate": 0.21281003916284164,
+    "failed_docs": []
+   }
+  }
+ },
+ "score_table": "语种  篇数  计分词数  Spearman   准确率   召回率    F1   金标差异率  预测差异率  失败篇数\nde     168    108945     0.232    0.281    0.412  0.334      0.127      0.186        0\nfr     168    124262     0.130    0.177    0.351  0.235      0.102      0.202        0\nit     168    118735     0.212    0.327    0.383  0.353      0.182      0.213        0\n三个语种平均 Spearman: 0.192",
+ "statuses": {
+  "ok": 491,
+  "salvaged": 13
+ },
+ "quote_locations": {
+  "ok": 8690,
+  "elsewhere": 362,
+  "not_found": 498,
+  "ambiguous": 274
+ },
+ "block_statuses": {
+  "partly": 9095,
+  "covered": 4918,
+  "absent": 1687
+ },
+ "cost": {
+  "documents": 504,
+  "calls": 5561,
+  "calls_from_cache": 685,
+  "prompt_tokens": 10232170,
+  "completion_tokens": 476868,
+  "prompt_tokens_per_doc": 20301.9,
+  "completion_tokens_per_doc": 946.2,
+  "seconds_per_doc_uncached": 6.65
+ },
+ "not_ok": [
+  {
+   "id": "admin_de_9",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_29",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_73",
+   "status": "salvaged",
+   "error": "1 of 39 calls failed; their blocks are scored as no difference",
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_de_100",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_9",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_61",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_113",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_fr_133",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_153",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_fr_196",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_49",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "stop"
+  },
+  {
+   "id": "admin_it_131",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "length"
+  },
+  {
+   "id": "admin_it_196",
+   "status": "salvaged",
+   "error": null,
+   "finish_reason": "length"
+  }
+ ],
+ "diagnostics": {
+  "de": {
+   "recall_by_position_decile": [
+    0.247,
+    0.372,
+    0.392,
+    0.336,
+    0.327,
+    0.331,
+    0.459,
+    0.479,
+    0.498,
+    0.554
+   ],
+   "gold_positive_by_decile": [
+    1286,
+    1129,
+    1105,
+    1078,
+    1117,
+    1525,
+    1715,
+    1417,
+    1503,
+    1950
+   ],
+   "quote_length_median": 3,
+   "quote_length_p90": 9,
+   "n_quotes_located": 3019,
+   "tier_precision": {
+    "absent_block": 0.463,
+    "quote": 0.162
+   },
+   "tier_tokens": {
+    "absent_block": 8034,
+    "quote": 12223
+   },
+   "spearman_absent_first": 0.2513,
+   "spearman_quote_first": 0.21
+  },
+  "fr": {
+   "recall_by_position_decile": [
+    0.193,
+    0.295,
+    0.286,
+    0.322,
+    0.342,
+    0.336,
+    0.386,
+    0.397,
+    0.484,
+    0.51
+   ],
+   "gold_positive_by_decile": [
+    1474,
+    1137,
+    1408,
+    1261,
+    1218,
+    1305,
+    1206,
+    1150,
+    1140,
+    1314
+   ],
+   "quote_length_median": 4,
+   "quote_length_p90": 10,
+   "n_quotes_located": 3107,
+   "tier_precision": {
+    "absent_block": 0.21,
+    "quote": 0.151
+   },
+   "tier_tokens": {
+    "absent_block": 10951,
+    "quote": 14104
+   },
+   "spearman_absent_first": 0.1354,
+   "spearman_quote_first": 0.1238
+  },
+  "it": {
+   "recall_by_position_decile": [
+    0.215,
+    0.281,
+    0.316,
+    0.352,
+    0.306,
+    0.34,
+    0.442,
+    0.519,
+    0.492,
+    0.511
+   ],
+   "gold_positive_by_decile": [
+    2277,
+    2046,
+    2086,
+    1874,
+    1896,
+    2048,
+    2362,
+    2119,
+    2327,
+    2586
+   ],
+   "quote_length_median": 4,
+   "quote_length_p90": 10,
+   "n_quotes_located": 3200,
+   "tier_precision": {
+    "absent_block": 0.449,
+    "quote": 0.228
+   },
+   "tier_tokens": {
+    "absent_block": 11346,
+    "quote": 13922
+   },
+   "spearman_absent_first": 0.2293,
+   "spearman_quote_first": 0.1926
+  }
+ },
+ "failed_documents": []
+}

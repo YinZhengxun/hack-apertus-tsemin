@@ -1,0 +1,34 @@
+Annotate a pair of English-French input sentences. The goal is to label every word in each sentence regarding its semantic similarity to the words in the other sentence.
+
+## Example 1:
+Input sentence 1: ["Former", "Nazi", "death", "camp", "guard", "Demjanjuk", "dead", "at", "91"]
+Input sentence 2: ["John", "Demjanjuk", "", "", "gardien", "des", "camps", "de", "la", "mort", "nazis", "", "", "meurt", "à", "l", "'", "âge", "de", "91", "ans"]
+Output: {"sentence1": [["Former", 1],["Nazi", 5],["death", 5],["camp", 5],["guard", 5],["Demjanjuk", 5],["dead", 5],["at", 5],["91", 5]],"sentence2":[["John", 0], ["Demjanjuk", 5], ["", -1], ["", -1], ["gardien", 5], ["des", 5], ["camps", 5], ["de", 5], ["la", 5], ["mort", 5], ["nazis", 3], ["", -1], ["", -1], ["meurt", 5], ["à", 4], ["l", 4], ["'", -1], ["âge", 4], ["de", 4], ["91", 5], ["ans", 4]]}
+
+## Example 2:
+Input sentence 1: ["Saudis", "to", "permit", "women", "to", "compete", "in", "Olympics"]
+Input sentence 2: ["Les", "femmes", "saoudiennes", "autorisées", "à", "participer", "aux", "Jeux", "olympiques"]
+Output: {"sentence1": [["Saudis", 2], ["to", 1], ["permit", 1], ["women", 4], ["to", 0], ["compete", 3], ["in", 5], ["Olympics", 5]], "sentence2": [["Les", 4], ["femmes", 4], ["saoudiennes", 2], ["autorisées", 1], ["à", 3], ["participer", 1], ["aux", 5], ["Jeux", 5], ["olympiques", 5]]}
+
+## Example 3:
+Input sentence 1: ["6.8", "quake", "strikes", "off", "Solomon", "Islands"]
+Input sentence 2: ["Un", "séisme", "de", "magnitude", "6", "", "", "3", "frappe", "les", "îles", "Salomon", ":", "USGS"]
+Output: {"sentence1": [["6.8", 1], ["quake", 5], ["strikes", 4], ["off", 5], ["Solomon", 5], ["Islands", 5]], "sentence2": [["Un", 5], ["séisme", 5], ["de", 3], ["magnitude", 3], ["6", 5], ["", -1], ["", -1], ["3", 0], ["frappe", 4], ["les", 5], ["îles", 5], ["Salomon", 5], [":", -1], ["USGS", 0]]}
+
+## Score scale
+
+* **5:** Complete equivalence
+* **3-4:** Very similar or closely similar in terms of semantics.
+* **1–2** Slightly similar or somewhat similar.
+* **0:** No relation (there is no word in the other sentence that is even slightly similar in terms of semantics).
+* **-1:** Punctuation
+
+## Other guidelines
+* Make sure to output the correct JSON format and to preserve the provided sentence tokenization. Output only the raw JSON, without any additional text.
+
+## Input to Annotate
+
+Sentence 1: {{ sentence1 }}
+Sentence 2: {{ sentence2 }}
+
+Respond with the JSON object.

@@ -1,0 +1,38 @@
+== 1. paired bootstrap, D4-contrastive vs CTFAlign (1000 resamples, seed 0)
+dev
+配对 bootstrap：D4-contrastive 对 CTFAlign；重采样单位 = 英文页面（168 页，三语种同抽），1000 次（有效 1000，未定义 0），种子 0，95% 百分位区间
+  D4-contrastive 原始点估计 0.319（de 0.377 / fr 0.220 / it 0.362），重采样均值 0.319，区间 [0.297, 0.342]
+  CTFAlign       原始点估计 0.306（de 0.346 / fr 0.208 / it 0.365），重采样均值 0.306，区间 [0.276, 0.337]
+  差值           原始 +0.013，重采样均值 +0.013，区间 [-0.004, +0.027]；1000 次重采样里差值不为正的有 61 次
+test
+配对 bootstrap：D4-contrastive 对 CTFAlign；重采样单位 = 英文页面（56 页，三语种同抽），1000 次（有效 1000，未定义 0），种子 0，95% 百分位区间
+  D4-contrastive 原始点估计 0.311（de 0.398 / fr 0.176 / it 0.359），重采样均值 0.308，区间 [0.257, 0.355]
+  CTFAlign       原始点估计 0.291（de 0.330 / fr 0.189 / it 0.353），重采样均值 0.289，区间 [0.241, 0.340]
+  差值           原始 +0.020，重采样均值 +0.019，区间 [-0.011, +0.045]；1000 次重采样里差值不为正的有 116 次
+
+== 2. cost per document pair on dev60 (same 60 pairs for m2, d4, b0s)
+  m2   docs 60 | requests/pair 11.4 (cached 0.1) | prompt tok  20815 | generated tok  1001 | latency per live request 0.64 s -> per pair 7.3 s
+  d4   docs 60 | requests/pair 4.0 (cached 0.7) | prompt tok   3692 | generated tok     4 | latency per live request 0.78 s -> per pair 3.1 s
+  b0s  docs 60 | requests/pair 3.8 (cached 0.0) | prompt tok   6455 | generated tok  8085 | latency per live request 12.94 s -> per pair 49.4 s
+
+== 3. gold-difference spans by length (dev, both sides): percentile rank of the span's mean score within its language
+  Fuse            de: 1 n=882 med=0.69 2-4 n=1354 med=0.68 5+ n=629 med=0.78 | fr: 1 n=549 med=0.30 2-4 n=1112 med=0.60 5+ n=843 med=0.66 | it: 1 n=637 med=0.30 2-4 n=1699 med=0.59 5+ n=1332 med=0.72
+  D4-contrastive  de: 1 n=882 med=0.35 2-4 n=1354 med=0.66 5+ n=629 med=0.79 | fr: 1 n=549 med=0.31 2-4 n=1112 med=0.58 5+ n=843 med=0.67 | it: 1 n=637 med=0.31 2-4 n=1699 med=0.59 5+ n=1332 med=0.73
+  CTFAlign        de: 1 n=882 med=0.70 2-4 n=1354 med=0.69 5+ n=629 med=0.72 | fr: 1 n=549 med=0.53 2-4 n=1112 med=0.60 5+ n=843 med=0.66 | it: 1 n=637 med=0.62 2-4 n=1699 med=0.64 5+ n=1332 med=0.68
+
+== 4. example candidates (dev/val): verified absent blocks with the highest/lowest gold rate
+  de: 56 verified absent blocks with >=4 scored words; gold rate mean 0.50
+     rate 0.00 admin_de_116/a a008: This means that a vehicle may be subject to a penalty even if it does not exceed the 93 .
+     rate 0.00 admin_de_116/a a009: 6g / km carbon emissions target .
+     rate 1.00 admin_de_94/b b003: Januar 2018 bezahlen die Schweizer Stromkonsumentinnen und - konsumenten einen Netzzuschlag von 2 , 3 Rappen pro Kilowattstunde .
+     rate 1.00 admin_de_94/b b004: Das Geld fliesst in den Netzzuschlagsfonds , aus dem die verschiedenen Massnahmen finanziert werden .
+  fr: 46 verified absent blocks with >=4 scored words; gold rate mean 0.37
+     rate 0.00 admin_fr_116/a a008: This means that a vehicle may be subject to a penalty even if it does not exceed the 93 .
+     rate 0.00 admin_fr_116/a a011: The calculation tool can be used to calculate any penalty due .
+     rate 1.00 admin_fr_92/a a006: For full information please select German .
+     rate 1.00 admin_fr_96/b b034: Mais il peut en être autrement .
+  it: 56 verified absent blocks with >=4 scored words; gold rate mean 0.39
+     rate 0.00 admin_it_116/a a008: This means that a vehicle may be subject to a penalty even if it does not exceed the 93 .
+     rate 0.00 admin_it_147/b b009: Messaggio per lo specialista
+     rate 1.00 admin_it_92/a a006: For full information please select German .
+     rate 1.00 admin_it_94/b b002: Dal 1° gennaio 2018 i consumatori svizzeri pagano un supplemento rete di 2 , 3 ct . / kWh .
