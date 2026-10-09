@@ -4,7 +4,7 @@
 - **Event:** Online
 - **Team:** Tse-min — Zhengxun Yin (University of Zurich)
 - **Demo:** `demo/viewer.html` in the repository — an offline page showing every test and development document pair side by side, words shaded by the submitted score, gold differences underlined, CTFAlign switchable for comparison
-- **Code:** `⟨GitHub URL⟩`, project root `track_2a/`; `make run` there reproduces the test predictions
+- **Code:** https://github.com/YinZhengxun/hack-apertus-tsemin , project root `track_2a/`; `make run` there reproduces the test predictions
 
 ## 1. Summary
 
@@ -153,7 +153,7 @@ The read-back signal ranks long missing passages higher than CTFAlign does, but 
 - **Determinism:** temperature 0 and seed 0 for every request; each request is cached on disk under a hash of its full content, so an interrupted or partly failed run continues where it stopped. Hosted inference with dynamic batching is not guaranteed to be bit-identical across runs: an independent `make run` on 9 Oct from a different machine reproduced 0.322 (de .412 / fr .189 / it .365) against the submitted 0.323, with different prediction files (`docs/reproduction_2026-10-09.md`).
 - **Submitted predictions:** `data/predictions/full/tsemin_admin_{de,fr,it}.jsonl.jsonl`, 224 pairs per language in full-set order (from which the official script selects the 56 test pairs), SHA-256 prefixes de `b7e48e339f202c9a`, fr `d3a8b96df69a3c59`, it `514cedff5b8b20f6`.
 - **Every number in this report without the endpoint:** the per-document results of the frozen runs are shipped gzipped in `data/frozen_runs/`. `python tools/report_tables.py` recomputes Table 1 and the ablations, `python tools/report_extra.py` the D4 − CTFAlign bootstrap, the cost table and Table 2, `python run.py stats --run data/frozen_runs/<fuse run> --vs ctfalign|d4` the other bootstrap rows, `python run.py audit --run …` the acceptance audit.
-- **Commit:** `⟨commit hash at submission⟩`.
+- **Commit:** `5a7d9c67d43509df71806d8ccec10789677ce146` (code and data; the report file itself was updated in a later commit).
 
 ## 8. Next steps
 
