@@ -4,3 +4,7 @@
 *.png binary
 *.pdf binary
 *.gz binary
+
+# Generated pages (the viewer embeds all predictions as JSON, 8 MB): keep them out of the language statistics
+track_2a/demo/viewer.html linguist-generated=true
+track_2a/docs/*.html linguist-generated=true
