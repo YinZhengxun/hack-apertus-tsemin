@@ -16,8 +16,10 @@
   CTFAlign        0.319 0.208 0.312 | 0.280   (tokens 17236/40689=42% 22036/46623=47% 25272/44768=56%)
 
 === b0s predicted-difference rate (score>0) vs gold rate, and doc statuses
-Traceback (most recent call last):
-  File "/home/claude/uzh-semantic-diff/track_2a/tools/b0s_chunk_diagnostic.py", line 104, in <module>
-    rows = [json.loads(l) for l in open(RUN / "results_b0s.jsonl")]
-                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'data/frozen_runs/20261008-140115-b0s-test/results_b0s.jsonl'
+  doc statuses: {'salvaged': 117, 'invalid_answer': 26, 'ok': 25}
+  calls 691, prompt tokens/doc 6994, completion tokens/doc 8913, latency/doc 54.4s, total wall ~ 76 min at 2 workers
+
+=== inside answered chunks: tokens that received a label from the answer, and of those labelled 'different' (<5)
+  de: matched 9454/19754 = 48%, of matched labelled different 80%
+  fr: matched 11339/24956 = 45%, of matched labelled different 83%
+  it: matched 13891/28653 = 48%, of matched labelled different 78%

@@ -12,6 +12,10 @@ Scores above were recomputed with the official evaluation script (`--split dev`)
 scorer; both agree. Only development documents are included (the source directories hold no test data).
 Texts are the CC-BY-4.0 SwissGov-RSD texts; the label columns are the respective systems' outputs.
 
+Licences: the CTFAlign files come from a repository under the MIT License (Copyright (c) 2026 Michelle Wastl; the full
+notice is in `THIRD_PARTY_NOTICES.md` at the project root). The SwissGov-RSD repository, source of the mmBERT files, does
+not state a licence; those files are included unchanged as a comparison row and will be removed on request.
+
 ## Test-split reference (added 2026-10-07, after our configuration was frozen and our single test run was done)
 
 `test/ctfalign_qwen3emb4b_l20_admin_{de,fr,it}.jsonl.jsonl` — the same CTFAlign system's published **test** predictions

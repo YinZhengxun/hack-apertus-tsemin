@@ -1,3 +1,29 @@
+# Tse-min — Hack Apertus Track 2A (UZH): word-level semantic differences with Apertus read-back probabilities
+
+Team **Tse-min** (Zhengxun Yin, University of Zurich). For an English page of a Swiss federal website and its German,
+French or Italian version, the system scores every word by how likely its meaning is missing or different on the other
+side (SwissGov-RSD). Apertus-v1.5-8B reads each document with and without the other page in the prompt; words that stay
+surprising are the suspects. No training; the core signal needs 4 requests per document pair.
+
+**Test split (official script):** Spearman **0.323** (de .412 / fr .189 / it .367); the organisers' CTFAlign alignment
+system 0.291; the paper's prompting baseline with the same Apertus-8B −0.015.
+
+| | |
+|---|---|
+| Project root (code, data, predictions) | [`track_2a/`](track_2a/) — start with its [README](track_2a/README.md) |
+| Method description (2 pages) | [`track_2a/Tse-min_Method.pdf`](track_2a/Tse-min_Method.pdf) |
+| Technical report (6 pages) | [`track_2a/Tse-min_Report.pdf`](track_2a/Tse-min_Report.pdf) |
+| Demo (opens in the browser) | <https://yinzhengxun.github.io/hack-apertus-tsemin/track_2a/demo/viewer.html> |
+| Submitted predictions | [`track_2a/data/predictions/full/`](track_2a/data/predictions/full/) |
+| Run | `export LLM_API_KEY=...`, then `make run` here (forwards to `track_2a/`; needs Docker) |
+
+Licences: code Apache-2.0 ([`LICENSE`](LICENSE)); report and method description CC-BY-4.0; third-party data under their
+own terms ([`track_2a/THIRD_PARTY_NOTICES.md`](track_2a/THIRD_PARTY_NOTICES.md)).
+
+---
+
+*The rest of this file is the description that came with the Hack Apertus project template.*
+
 # Hack Apertus — project template
 
 Template repository for [Hack Apertus](https://hackapertus.ch/) submissions.

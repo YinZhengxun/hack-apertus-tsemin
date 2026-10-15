@@ -129,8 +129,8 @@ not adopted (Section 5.6)</li>
 scoring for D4, generation for M2; no fine-tuning</li>
 <li><strong>Where it runs:</strong> CSCS hosted endpoint
 <code>https://api.inference.cscs.ch/v1</code> (OpenAI-compatible chat
-route served by vLLM <code>0.23.1rc1</code>); temperature 0, seed 0 for
-every request</li>
+route served by vLLM <code>0.23.1rc1</code>); temperature 0 for every
+request, seed 0 where text is generated</li>
 </ul>
 <p><strong>3.1 D4: read-back probabilities.</strong> For side X of a
 pair (the other side is Y) we send two chat requests whose last message
@@ -159,14 +159,14 @@ exp(−max(<em>v</em>, 0) / 3).</p>
 <p>Subtracting part of <em>s</em><sub>u</sub> discounts words that are
 surprising anyway (names, numbers, rare terms); the moving mean reflects
 that differences come in spans. The floor at zero is part of the method:
-the words that become <em>less</em> surprising with Y than without it
-(62–71 %) are all tied at the bottom, which removes noise from their
-mutual order (Section 5.4). The value is a ranker, not a probability of
-difference: it contrasts two prompts rather than estimating a pointwise
-mutual information, and a high value means "worth suspecting", not
-"proven absent". Tokens are mapped back to words through the returned
-prompt text (exact on every development and test request; a failed
-mapping is recorded, not scored as zero).</p>
+the words whose signal is not positive (62–71 %) are all tied at the
+bottom, which removes noise from their mutual order (Section 5.4). The
+value is a ranker, not a probability of difference: it contrasts two
+prompts rather than estimating a pointwise mutual information, and a
+high value means "worth suspecting", not "proven absent". Tokens are
+mapped back to words through the returned prompt text (exact on every
+development and test request; a failed mapping is recorded, not scored
+as zero).</p>
 <p><em>Relation to prior work.</em> D4 follows DiffMask (Vamvas and
 Sennrich, 2023), which scored a word by how much a masked language
 model's cross-entropy for it drops when the other document is added, and
@@ -574,7 +574,7 @@ processed in parallel):</p>
 </tr>
 </tbody>
 </table>
-<p>The M2 tier costs 3.4 times the requests and 2.3 times the endpoint
+<p>The M2 tier costs 2.9 times the requests and 2.3 times the endpoint
 time of D4 alone for +0.01–0.02. A <code>make run</code> of the test
 split (168 pairs) takes 15–25 minutes, the full set (672 pairs) one to
 one and a half hours. On dev60, Apertus-70B gave no clear advantage (70B
@@ -582,8 +582,8 @@ for M2 with 8B for D4: .376; 70B for both: .363; 8B for both: .375)
 while M2 took 15.6 instead of about 7 s per pair, so the 8B model is
 used throughout. CTFAlign was not timed in the same environment; no
 speed comparison with it is claimed.</p>
-<p><strong>5.7 French.</strong> All compared systems are weakest on
-EN–FR (test: Fuse .189, CTFAlign .189); French also has the lowest
+<p><strong>5.7 French.</strong> Fuse, D4 and CTFAlign are all weakest on
+EN–FR (test: .189, .176, .189); French also has the lowest
 gold-difference rate (8.9 % on test) and the lowest human agreement
 (.436). Both of our signals separate less well there — M2's
 <em>absent</em> blocks contain 21 % gold-difference words on dev (de 46
@@ -648,7 +648,7 @@ predictions.</li>
 does not distinguish kinds or severity of difference; the annotators'
 graded labels are reproduced only through the order; single-word
 differences are largely missed (Section 5.8).</li>
-<li><strong>The M2 tier is a small, uncertain gain</strong> for 3.4
+<li><strong>The M2 tier is a small, uncertain gain</strong> for 2.9
 times the requests: +0.024 over D4 on <em>dev/train</em>, +0.003 on
 <em>dev/val</em>, +0.012 on test with an interval that includes zero. D4
 is the stable part.</li>
@@ -674,7 +674,7 @@ the image and runs <code>src/entrypoint.sh</code>: 1/6 offline self-test
 on a prefilled assistant message must work, otherwise exit 4), 3/6 M2,
 4/6 D4, 5/6 Fuse, 6/6 audit. Every step must succeed; an inference step
 that ends with failed requests (the shared endpoint answers HTTP 500 for
-a few requests in most runs) is repeated up to three times, re-sending
+a few requests in most runs) is attempted up to three times, re-sending
 only the failed requests; the audit exits 3 on a fatal finding (missing
 documents or D4 sides, length or alignment errors, prediction file not
 matching the gold order) and nothing is copied in that case. It reads
@@ -691,13 +691,14 @@ model runs on the endpoint. Verified end to end with Docker Desktop 4.94
 on Windows (x86-64) against the CSCS endpoint (<code>SPLIT=smoke</code>
 and <code>SPLIT=test</code>); both paths of the entry point (capable and
 incapable endpoint) were tested against a mock server.</li>
-<li><strong>Determinism:</strong> temperature 0 and seed 0 for every
-request; each request is cached on disk under a hash of its full
-content, so an interrupted or partly failed run continues where it
-stopped. Hosted inference with dynamic batching is not guaranteed to be
-bit-identical across runs: an independent <code>make run</code> on 9 Oct
-from a different machine reproduced 0.322 (de .412 / fr .189 / it .365)
-against the submitted 0.323, with different prediction files
+<li><strong>Determinism:</strong> temperature 0 for every request (seed
+0 where text is generated); each request is cached on disk under a hash
+of its full content, so an interrupted or partly failed run continues
+where it stopped. Hosted inference with dynamic batching is not
+guaranteed to be bit-identical across runs: an independent
+<code>make run</code> on 9 Oct from a different machine reproduced 0.322
+(de .412 / fr .189 / it .365) against the submitted 0.323, with
+different prediction files
 (<code>docs/reproduction_2026-10-09.md</code>).</li>
 <li><strong>Submitted predictions:</strong>
 <code>data/predictions/full/tsemin_admin_{de,fr,it}.jsonl.jsonl</code>,
@@ -705,8 +706,8 @@ against the submitted 0.323, with different prediction files
 selects the 56 test pairs), SHA-256 prefixes de
 <code>b7e48e339f202c9a</code>, fr <code>d3a8b96df69a3c59</code>, it
 <code>514cedff5b8b20f6</code>.</li>
-<li><strong>Every number in this report without the endpoint:</strong>
-the per-document results of the frozen runs are shipped gzipped in
+<li><strong>The tables without the endpoint:</strong> the per-document
+results of the frozen runs are shipped gzipped in
 <code>data/frozen_runs/</code>.
 <code>python tools/report_tables.py</code> recomputes Table 1 and the
 ablations, <code>python tools/report_extra.py</code> the D4 − CTFAlign
@@ -716,7 +717,7 @@ the other bootstrap rows, <code>python run.py audit --run …</code> the
 acceptance audit.</li>
 <li><strong>Commit:</strong>
 <code>5a7d9c67d43509df71806d8ccec10789677ce146</code> (code and data;
-the report file itself was updated in a later commit).</li>
+later commits leave the pipeline unchanged).</li>
 </ul>
 <h2 id="8-next-steps">8. Next steps</h2>
 <p>The two signals have complementary blind spots — the read-back finds

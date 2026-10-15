@@ -101,7 +101,7 @@ for name, p in (("b0s", b0s), ("D4-contrastive", d4c), ("Fuse", fuse), ("CTFAlig
 
 # rates
 print("\n=== b0s predicted-difference rate (score>0) vs gold rate, and doc statuses")
-rows = [json.loads(l) for l in open(RUN / "results_b0s.jsonl")]
+rows = list(load_results(RUN, "b0s").values())   # reads results_b0s.jsonl or the gzipped copy in data/frozen_runs
 print("  doc statuses:", dict(Counter(r["status"] for r in rows)))
 print("  calls %d, prompt tokens/doc %.0f, completion tokens/doc %.0f, latency/doc %.1fs, total wall ~ %.0f min at 2 workers" % (
     sum(r["n_calls"] for r in rows), sum(r["prompt_tokens"] for r in rows) / len(rows), sum(r["completion_tokens"] for r in rows) / len(rows),

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tse-min method description</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+/* method_description.md -> Tse-min_Method.pdf (max. 2 pages); same look as report_pdf.css, slightly denser */
+@page { size: A4; }
+html { font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif; font-size: 8.9pt; line-height: 1.25; color: #111; }
+body { margin: 0; }
+h1 { font-size: 13.6pt; margin: 0 0 4pt; line-height: 1.2; font-family: "DejaVu Sans", Arial, sans-serif; }
+h1 + p, h1 + p + p { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 8.1pt; line-height: 1.3; text-align: left; color: #333; margin: 2pt 0; }
+h1 + p + p { padding-bottom: 4pt; border-bottom: 0.5pt solid #999; margin-bottom: 5pt; }
+h2 { font-size: 10.6pt; margin: 7pt 0 2pt; font-family: "DejaVu Sans", Arial, sans-serif; break-after: avoid; }
+p { margin: 2.6pt 0; text-align: justify; hyphens: auto; }
+ul, ol { margin: 2.6pt 0; padding-left: 14pt; }
+li { margin: 1pt 0; text-align: justify; }
+a { color: #0b4f9c; text-decoration: none; }
+table { border-collapse: collapse; margin: 3pt 0 3pt; font-size: 8.4pt; width: 100%; break-inside: avoid; font-family: "DejaVu Sans", Arial, sans-serif; }
+th, td { border-top: 0.5pt solid #999; border-bottom: 0.5pt solid #999; padding: 1.4pt 4pt; text-align: left; vertical-align: top; }
+th { background: #f0f0f0; }
+td:not(:first-child), th:not(:first-child) { text-align: right; white-space: nowrap; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 7.9pt; }
+img { width: 66%; margin: 1pt 17% 0; }
+figure { margin: 3pt 0; }
+figcaption { display: none; }
+em { font-style: italic; }
+p:has(+ table) { break-after: avoid; }
+h2 + p { break-before: avoid; }
+p:has(> img) { break-after: avoid; margin: 0; }
+p:last-child { font-size: 7.9pt; line-height: 1.22; }
+h2:last-of-type ~ p { text-align: left; }
+
+</style>
+</head>
+<body>
+
+<h1
+id="reading-instead-of-writing-word-level-semantic-differences-from-apertus-read-back-probabilities">Reading
+instead of writing: word-level semantic differences from Apertus
+read-back probabilities</h1>
+<p>Method description · Team <strong>Tse-min</strong> — Zhengxun Yin
+(University of Zurich) · Track 2A – UZH (SwissGov-RSD)</p>
+<p><strong>Code and predictions:</strong> <a
+href="https://github.com/YinZhengxun/hack-apertus-tsemin">https://github.com/YinZhengxun/hack-apertus-tsemin</a>
+(project root <code>track_2a/</code>) · <strong>Report:</strong>
+<code>track_2a/Tse-min_Report.pdf</code> (6 pages) ·
+<strong>Demo</strong> (all pairs, words shaded by score): <a
+href="https://yinzhengxun.github.io/hack-apertus-tsemin/track_2a/demo/viewer.html">https://yinzhengxun.github.io/hack-apertus-tsemin/track_2a/demo/viewer.html</a>
+· <strong>Model:</strong> <code>swiss-ai/Apertus-v1.5-8B</code> on the
+CSCS endpoint, inference only; no training; no other model in the
+pipeline.</p>
+<p><strong>In one paragraph.</strong> We do not ask Apertus to write a
+label for every word; we let it read. Each document is placed in the
+prompt as the model's own answer, with and without the other-language
+page, and the endpoint returns the log-probability of each of its tokens
+(<code>prompt_logprobs</code>). Words whose content is on the other page
+become easier to predict when that page is shown; words without a
+counterpart stay surprising. This read-back signal (D4: 4 requests and 4
+generated tokens per document pair) reaches a macro Spearman of 0.311 on
+the test split. Adding whole blocks that Apertus judges to have no
+counterpart, kept only when the read-back agrees, gives the submitted
+system (Fuse): <strong>0.323</strong> (de .412 / fr .189 / it .367),
+against 0.291 for the organisers' CTFAlign alignment system (Wastl et
+al., 2026b) and −0.015 for the prompting baseline of the SwissGov-RSD
+paper (Wastl et al., 2026a) run with the same Apertus-8B.</p>
+<h2 id="1-method">1. Method</h2>
+<p><img src="pipeline.png" alt="Figure 1" /></p>
+<p><em>Figure 1. Both signals run in both directions of a pair. Solid
+path: the standalone system D4; dashed: the optional M2 tier.</em></p>
+<p><strong>D4 — contrastive read-back (the core).</strong> For side X
+with counterpart Y we send two chat requests that end with an assistant
+message containing X verbatim (vLLM <code>continue_final_message</code>,
+<code>prompt_logprobs=0</code>, <code>max_tokens=1</code>, temperature
+0). In the <em>conditioned</em> request the user turn gives Y and asks
+for a faithful and complete X-language version; the
+<em>unconditioned</em> request keeps the system message and only asks
+for an X-language page of a Swiss government website. The negated sum of
+a word's token log-probabilities is its surprisal with Y,
+<em>s</em><sub>c</sub>(<em>w</em>), and without it,
+<em>s</em><sub>u</sub>(<em>w</em>); both sides of the pair are scored.
+The word score is</p>
+<p><em>v</em>(<em>w</em>) = mean over ±4 words of [
+<em>s</em><sub>c</sub>(<em>w</em>) − 0.75 ·
+<em>s</em><sub>u</sub>(<em>w</em>) ], score(<em>w</em>) = 1 −
+exp(−max(<em>v</em>, 0) / 3).</p>
+<p>Discounting part of <em>s</em><sub>u</sub> removes words that are
+surprising anyway (names, numbers, rare terms); the moving mean reflects
+that differences come in spans; the floor at zero ties the 62–71 % of
+words whose signal is not positive, which removes noise from their
+order. The score ranks suspicion; it is not a probability of
+difference.</p>
+<p><strong>M2 — block judgements (optional, ≈ 11 requests per
+pair).</strong> Each side is cut into blocks of at most 60 words at
+sentence boundaries. A request shows the other side as reference (all of
+it, or the 1,500 words around the corresponding position) and three
+blocks, and asks for a JSON status per block: <em>covered</em>,
+<em>absent</em> (no counterpart in the reference) or <em>partly</em>.
+Only <em>absent</em> is used: on the development split, absent blocks
+contain 46 / 21 / 45 % gold-difference words (de / fr / it; base rate 13
+/ 10 / 18 %), while <em>partly</em> blocks, 58–63 % of the words, are at
+the base rate.</p>
+<p><strong>Fuse — the submitted output layer.</strong> An
+<em>absent</em> block is put in a top tier, scores in [0.5, 1), only if
+the read-back agrees: the block's mean of <em>s</em><sub>c</sub> − 0.5 ·
+<em>s</em><sub>u</sub> must reach the 70th percentile of that quantity
+in the pair. All other words keep their D4 order in [0, 0.49). The
+metric pools all tokens of a language into one Spearman correlation, so
+only the order matters and scores are not rescaled per document. The
+four parameters (percentile 0.7, coefficients 0.5 and 0.75, window ±4)
+were chosen on 60 development pairs and checked once on dev/val; the
+configuration was then frozen and the submitted system evaluated on test
+once.</p>
+<h2 id="2-results">2. Results</h2>
+<p><em>Table 1. Official evaluation script (per language one pooled
+token-level Spearman, then the mean over the three pairs). Test: 56
+pairs per language; dev: 168; dev/val: the 34 held-back pairs of dev. †
+b0s was run on 60 development pairs only (−.011).</em></p>
+<table>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>test de</th>
+<th>test fr</th>
+<th>test it</th>
+<th><strong>test</strong></th>
+<th>dev</th>
+<th>dev/val</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fuse</strong> (submitted; Apertus-8B)</td>
+<td><strong>.412</strong></td>
+<td>.189</td>
+<td><strong>.367</strong></td>
+<td><strong>.323</strong></td>
+<td><strong>.340</strong></td>
+<td><strong>.321</strong></td>
+</tr>
+<tr class="even">
+<td>D4 alone (Apertus-8B)</td>
+<td>.398</td>
+<td>.176</td>
+<td>.359</td>
+<td>.311</td>
+<td>.319</td>
+<td>.318</td>
+</tr>
+<tr class="odd">
+<td>CTFAlign (organisers' alignment system; not Apertus)</td>
+<td>.330</td>
+<td>.189</td>
+<td>.353</td>
+<td>.291</td>
+<td>.306</td>
+<td>.269</td>
+</tr>
+<tr class="even">
+<td>Paper prompt with Apertus-8B (b0s)</td>
+<td>−.019</td>
+<td>.004</td>
+<td>−.030</td>
+<td>−.015</td>
+<td>— †</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Uncertainty.</strong> Paired bootstrap over pages (1,000
+resamples; the same pages drawn for all three languages; 95 % percentile
+intervals): Fuse − CTFAlign = +0.032 [+0.009, +0.052] on test and +0.033
+[+0.020, +0.045] on dev. D4 − CTFAlign = +0.020 [−0.011, +0.045] on
+test: four read-back requests are on a par with the alignment system.
+The M2 tier adds +0.012 [−0.001, +0.029] on test and +0.020 [+0.010,
++0.032] on dev — a small gain that the test interval does not
+resolve.</p>
+<p><strong>Ablations</strong> (dev / test, one change at a time). D4
+drops from .319 / .311 to .250 / .248 without the <em>s</em><sub>u</sub>
+discount and to .258 / .244 without the moving mean;
+<em>s</em><sub>u</sub> alone — never showing the other page — gives .014
+/ .025, so the signal comes from reading the other page. Fuse without
+the read-back check on M2's blocks: .323 / .312.</p>
+<p><strong>Baseline.</strong> The paper's prompt asks the model to write
+a score for every word. With Apertus-8B, 47 % of its requests on test
+ended at the output limit, mostly in repetition loops, and 78–83 % of
+the words it did label were labelled as different (gold: 9–16 %).</p>
+<h2 id="3-efficiency">3. Efficiency</h2>
+<p><em>Table 2. Cost per document pair on the 60 development pairs where
+all methods ran (CSCS endpoint; endpoint time = mean live request time ×
+requests per pair).</em></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Requests</th>
+<th>Prompt tokens</th>
+<th>Generated tokens</th>
+<th>Endpoint time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>D4 (standalone system)</td>
+<td>4.0</td>
+<td>3,692</td>
+<td>4</td>
+<td>3.1 s</td>
+</tr>
+<tr class="even">
+<td>Fuse = D4 + M2 (submitted)</td>
+<td>15.4</td>
+<td>24,507</td>
+<td>1,005</td>
+<td>10.4 s</td>
+</tr>
+<tr class="odd">
+<td>Paper prompt (b0s)</td>
+<td>3.8</td>
+<td>6,455</td>
+<td>8,085</td>
+<td>49.4 s</td>
+</tr>
+</tbody>
+</table>
+<p>D4 generates about 2,000 times fewer tokens than the paper's prompt
+and needs a sixteenth of its endpoint time. The M2 tier costs 2.9 times
+the requests and 2.3 times the endpoint time of D4 for +0.01–0.02.
+Apertus-70B gave no clear gain on the 60 selection pairs (.363–.376
+against .375 for 8B) while its M2 requests took about twice as long, so
+the 8B model is used throughout. <code>make run</code> on the test split
+(168 pairs) takes 15–25 minutes.</p>
+<h2 id="4-what-is-new-and-where-it-breaks">4. What is new, and where it
+breaks</h2>
+<ul>
+<li><strong>Read-back scoring through a hosted chat endpoint.</strong>
+D4 builds on DiffMask (Vamvas and Sennrich, 2023) and contrastive
+conditioning (Vamvas and Sennrich, 2022) and is related to
+context-contrastive likelihoods such as P-CXMI (Fernandes et al., 2023)
+and PECoRe (Sarti et al., 2024). What we add is its use with a general
+instruction-tuned decoder behind a chat endpoint: one teacher-forced
+pass per side and condition, on whole, naturally occurring document
+pairs, in both directions, without access to the weights.</li>
+<li><strong>Generation versus probabilities from the same
+model.</strong> With the paper's prompt, Apertus-8B fails to write word
+labels; block judgements are useful only for "nothing corresponds";
+reading probabilities is both the best and the cheapest signal.</li>
+<li><strong>Blind spots.</strong> On dev, D4 ranks long missing passages
+above CTFAlign in German and Italian and level in French (spans of ≥ 5
+words: median percentile rank .79 / .67 / .73 against .72 / .66 / .68),
+but more than half of the single-word differences (a changed number, a
+more specific term) fall into D4's zero floor, where word alignment
+still ranks them above chance. French is the weakest pair for Fuse, D4
+and CTFAlign and has the lowest human agreement (.436). The blind spots
+are complementary, so combining D4 with an alignment score is the
+natural next step.</li>
+<li><strong>Limits.</strong> D4 needs vLLM extensions
+(<code>prompt_logprobs</code> on a prefilled assistant message, the
+returned prompt text); <code>make run</code> checks the first up front
+and stops, rather than degrade, if D4 fails. The score orders suspicion;
+it does not grade the kind or severity of a difference. Four parameters
+were chosen on 60 pairs, so a selection effect cannot be ruled out
+completely.</li>
+</ul>
+<h2 id="5-reproducibility">5. Reproducibility</h2>
+<p><code>make run</code> from the repository root (Docker, no GPU) runs
+a self-test (95 tests), a capability gate that stops with exit code 4
+unless the endpoint returns <code>prompt_logprobs</code> for a prefilled
+assistant message (the CSCS endpoint does), M2, D4, Fuse, and an
+acceptance audit that stops with exit code 3 on any fatal problem. The
+client retries requests that fail on the shared endpoint (HTTP 5xx), and
+an inference step that still has failures is attempted up to three
+times; successful requests are cached on disk. An independent
+<code>make run</code> from another machine gave 0.322. Submitted
+predictions:
+<code>track_2a/data/predictions/full/tsemin_admin_{de,fr,it}.jsonl.jsonl</code>
+(224 pairs per language in full-set order; the official script selects
+the test pairs). The per-document results of every frozen run are in
+<code>data/frozen_runs/</code>, so the tables can be recomputed without
+the endpoint (<code>tools/report_tables.py</code>,
+<code>tools/report_extra.py</code>, <code>run.py stats</code>). The test
+labels entered the project only after the configuration was frozen, and
+the code refuses to read them without <code>--allow-test</code>.</p>
+<p>Code: Apache-2.0; this description and the report: CC-BY-4.0;
+third-party data keep their own licences
+(<code>THIRD_PARTY_NOTICES.md</code>). Code, analyses and texts were
+written with the help of an AI coding assistant; all design decisions,
+runs and checks were made and verified by the team.</p>
+<p><strong>References.</strong> Wastl, Vamvas, Sennrich (2026a):
+SwissGov-RSD: A Human-annotated, Cross-lingual Benchmark for Token-level
+Recognition of Semantic Differences Between Related Documents, ACL 2026.
+— (2026b): Scaling Unsupervised Word Alignment to Documents via
+Structural Constraints, arXiv:2608.21023. — Vamvas, Sennrich (2023):
+Towards Unsupervised Recognition of Token-level Semantic Differences in
+Related Documents, EMNLP 2023. — (2022): As Little as Possible, as Much
+as Necessary: Detecting Over- and Undertranslations with Contrastive
+Conditioning, ACL 2022. — Fernandes et al. (2023): When Does Translation
+Require Context?, ACL 2023. — Sarti et al. (2024): Quantifying the
+Plausibility of Context Reliance in Neural Machine Translation, ICLR
+2024.</p>
+</body>
+</html>

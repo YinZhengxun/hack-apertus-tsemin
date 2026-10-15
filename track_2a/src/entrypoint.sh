@@ -8,7 +8,7 @@
 # Endpoint: LLM_NAME, LLM_BASE_URL, LLM_API_KEY (the three variables of the Hack Apertus template).
 #
 # Every step must succeed; the script stops at the first failure and copies nothing to output/ in that case.
-# Inference steps whose run ends with failed requests are repeated up to 3 times (cached requests are not re-sent).
+# Inference steps whose run ends with failed requests are attempted up to 3 times (cached requests are not re-sent).
 # Step 2 is a hard gate: d4 needs prompt_logprobs on a prefilled assistant message (a vLLM extension); an endpoint
 # without it ends the run with exit code 4 rather than producing m2-only predictions.
 set -eu
@@ -36,7 +36,7 @@ step() {   # step <title> <command...>: run, keep the full output in the log, sh
 }
 
 # inference <title> <command...>: like step, but a run that ends with failed requests (exit 5: the endpoint
-# answered 5xx or timed out for some documents even after the client's retries) is repeated up to 3 times.
+# answered 5xx or timed out for some documents even after the client's retries) is attempted up to 3 times.
 # Successful requests are cached, so a repetition only re-sends the failed ones. Anything else stops the run.
 inference() {
     title="$1"; shift

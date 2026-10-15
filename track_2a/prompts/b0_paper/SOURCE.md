@@ -8,5 +8,6 @@ the model labels every token of both documents with a similarity score from 0 to
 They are used here only to reproduce the paper's baseline prompting setup with Apertus, which is the
 reference point named in the challenge description.
 
-To settle before the repository is made public: the source repository has no licence file, so confirm
-with the authors that these three files may be redistributed, or fetch them at run time instead.
+Licence: the source repository does not state a licence. The files are included unchanged and only for this
+reproduction, which the challenge description asks for; they are not covered by this repository's licence, all rights
+remain with the authors, and they will be removed on request (see `THIRD_PARTY_NOTICES.md`).

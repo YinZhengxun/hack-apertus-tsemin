@@ -1,0 +1,26 @@
+/* method_description.md -> Tse-min_Method.pdf (max. 2 pages); same look as report_pdf.css, slightly denser */
+@page { size: A4; }
+html { font-family: "DejaVu Serif", "Liberation Serif", Georgia, serif; font-size: 8.9pt; line-height: 1.25; color: #111; }
+body { margin: 0; }
+h1 { font-size: 13.6pt; margin: 0 0 4pt; line-height: 1.2; font-family: "DejaVu Sans", Arial, sans-serif; }
+h1 + p, h1 + p + p { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 8.1pt; line-height: 1.3; text-align: left; color: #333; margin: 2pt 0; }
+h1 + p + p { padding-bottom: 4pt; border-bottom: 0.5pt solid #999; margin-bottom: 5pt; }
+h2 { font-size: 10.6pt; margin: 7pt 0 2pt; font-family: "DejaVu Sans", Arial, sans-serif; break-after: avoid; }
+p { margin: 2.6pt 0; text-align: justify; hyphens: auto; }
+ul, ol { margin: 2.6pt 0; padding-left: 14pt; }
+li { margin: 1pt 0; text-align: justify; }
+a { color: #0b4f9c; text-decoration: none; }
+table { border-collapse: collapse; margin: 3pt 0 3pt; font-size: 8.4pt; width: 100%; break-inside: avoid; font-family: "DejaVu Sans", Arial, sans-serif; }
+th, td { border-top: 0.5pt solid #999; border-bottom: 0.5pt solid #999; padding: 1.4pt 4pt; text-align: left; vertical-align: top; }
+th { background: #f0f0f0; }
+td:not(:first-child), th:not(:first-child) { text-align: right; white-space: nowrap; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 7.9pt; }
+img { width: 66%; margin: 1pt 17% 0; }
+figure { margin: 3pt 0; }
+figcaption { display: none; }
+em { font-style: italic; }
+p:has(+ table) { break-after: avoid; }
+h2 + p { break-before: avoid; }
+p:has(> img) { break-after: avoid; margin: 0; }
+p:last-child { font-size: 7.9pt; line-height: 1.22; }
+h2:last-of-type ~ p { text-align: left; }
